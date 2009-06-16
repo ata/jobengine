@@ -1,0 +1,33 @@
+<html>
+<wicket:panel>
+	<div class="grid_9 content">
+		<h2>Job Search Result</h2>
+		<p>
+			Found <b><span wicket:id="resultSize"/></b> result with <b>
+			<span wicket:id="keywords"/></b> keywords
+			
+		</p>
+		
+		<div class="result" wicket:id="eachResult">
+			<div>
+				<a wicket:id="submitLink"><h3><span wicket:id="position"/></h3></a>
+			</div>
+			<div wicket:id="employer.name"></div>
+			<div>expired : <span wicket:id="expired"/></div>
+			
+			<div>minimum experience : <span wicket:id="experience"/> years,</div>
+			<div>location : <span wicket:id="location.name"/></div>
+			<div wicket:id="summary"></div>
+		</div>
+		<div class="nav_result">
+			<a wicket:id="previousLink" href="#">[previous]</a>
+			<span wicket:id="pageNav">
+				<a wicket:id="numPageLink">
+					<span wicket:id="numPageLabel"/>
+				</a>
+			</span>
+			<a wicket:id="nextLink" href="#">[next]</a>
+		</div>
+	</div>
+</wicket:panel>
+</html>

@@ -1,0 +1,51 @@
+  
+/*Credits: By Santosh Setty (http://webdesigninfo.wordpress.com) */
+/*Posted to: Dynamic Drive CSS Library (http://www.dynamicdrive.com/style/) */
+
+.glossymenu{
+	position: relative;
+	/*padding: 0 0 0 34px;*/
+	/*margin: 0 0 0 auto;*/
+	margin-bottom:0;
+	background: url(menuo_bg.gif) #fff repeat-x ; /*tab background image path*/
+	height: 46px;
+	list-style: none;
+}
+
+.glossymenu li{
+	float:left;
+}
+
+.glossymenu li a{
+	float: left;
+	display: block;
+	color:#000;
+	text-decoration: none;
+	font-family: sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	padding:0 0 0 16px; /*Padding to accomodate left tab image. Do not change*/
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	cursor: pointer;	
+}
+
+.glossymenu li a b{
+	float: left;
+	display: block;
+	padding: 0 24px 0 8px; /*Padding of menu items*/
+}
+
+.glossymenu li a.selected, .glossymenu li a:hover{
+	color: #fff;
+	background: url(menuo_hover_left.gif) no-repeat; /*left tab image path*/
+	background-position: left;
+}
+
+.glossymenu li  a.selected b, .glossymenu li a:hover b{
+	color: #fff;
+	background: url(menuo_hover_right.gif) no-repeat right top; /*right tab image path*/
+}
+
+

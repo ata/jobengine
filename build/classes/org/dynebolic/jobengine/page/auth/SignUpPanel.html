@@ -1,0 +1,43 @@
+<html xmlns:wicket>
+<wicket:panel>
+	<fieldset>
+		<legend>New User</legend>
+		<span wicket:id="feedback" class="feedback"/>
+		<form wicket:id="signUpForm" id="signUp">
+			<table>
+				<tr>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td><label>You Are</label></td>
+					<td><select wicket:id="role"><option>Role</option></select></td>
+				</tr>
+				<tr>
+					<td><label>Name / Company Name</label></td>
+					<td><input wicket:id="name"></td>
+				</tr>
+				<tr>
+					<td><label>Username</label></td>
+					<td><input wicket:id="username"></td>
+				</tr>
+				<tr>
+					<td><label>Email</label></td>
+					<td><input wicket:id="email"></td>
+				</tr>
+				<tr>
+					<td><label>Password</label></td>
+					<td><input wicket:id="password" type="password"></td>
+				</tr>
+				<tr>
+					<td><label>Validate Password</label></td>
+					<td><input wicket:id="validatePassword" type="password"></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input wicket:id="submit" type="submit" name="submit" value="Sign Up"/></td>
+				</tr>
+			</table>
+		</form>
+	</fieldset>
+</wicket:panel>
+</html>

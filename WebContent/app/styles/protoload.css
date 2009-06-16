@@ -1,0 +1,27 @@
+.waiting {
+	background-image:url('waiting.gif');
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-color:white;
+}
+
+.bigWaiting {
+	background-image:url('bigWaiting.gif');
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-color:white;
+}
+
+.blackWaiting {
+	background-image:url('blackWaiting.gif');
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-color:black;
+}
+
+.bigBlackWaiting {
+	background-image:url('bigBlackWaiting.gif');
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-color:black;
+}

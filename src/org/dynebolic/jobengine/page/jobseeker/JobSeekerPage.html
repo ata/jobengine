@@ -1,0 +1,19 @@
+<wicket:extend>
+	<span wicket:id="searchPanel"/>
+	<div class="clear"></div>
+	<div class="grid_9 content">
+		<span wicket:id="content"/>
+		<div class="bigWaiting" id="ajaxIndicator"></div>
+	</div>
+	<div class="grid_3 sidebar">
+		<span wicket:id="jobSeekerMenuPanel"/>
+		<div wicket:id="signUpContainer" class="box">
+			<a href="about:none" onclick="Modalbox.show($('signUp'),{width:380, title: 'Sign Up'})"><h2>Sign Up</h2></a>
+			<span wicket:id="signUpPanel" id="signUp" style="display:none"/>
+			<div style="display:none" id="successRegister">
+				<h2>Success Registed</h2>
+				Please login in <a wicket:id="loginLink">here</a>
+			</div>
+		</div>
+	</div>
+</wicket:extend>
