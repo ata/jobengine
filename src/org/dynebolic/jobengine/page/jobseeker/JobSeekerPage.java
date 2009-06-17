@@ -68,10 +68,6 @@ public class JobSeekerPage extends BasePage implements IAjaxIndicatorAware{
 		}
 		
 	}
-	private JobEngineAuthenticatedWebSession getJESession(){
-		return  (JobEngineAuthenticatedWebSession) 
-				JobEngineAuthenticatedWebSession.get();
-	}
 	
 	
 }

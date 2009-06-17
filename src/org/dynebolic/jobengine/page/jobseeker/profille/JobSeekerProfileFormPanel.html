@@ -3,24 +3,24 @@
 	<fieldset>
 		<legend>Job Seeker Profile</legend>
 		<span>Feedback</span>
-		<form>
+		<form wicket:id="form">
 			<table>
 				<tr> 
 					<td>Full Name</td>
-					<td><input type="text" /></td>
+					<td><input wicket:id="name" type="text" /></td>
 				</tr>
 				<tr> 
 					<td>Birth Place</td>
-					<td><input type="text" /></td>
+					<td><input wicket:id="birthPlace" type="text" /></td>
 				</tr>
 				<tr> 
 					<td>Birth Date</td>
-					<td><input type="text" /></td>
+					<td><input wicket:id="birthDate" type="text" /></td>
 				</tr>
 				<tr> 
 					<td>Gender</td>
 					<td>
-						<select>
+						<select wicket:id="gender" >
 							<option>Male</option>
 							<option>Female</option>  
 						</select>
@@ -29,7 +29,7 @@
 				<tr>
 					<td>Location</td>
 					<td>
-						<select>
+						<selec wicket:id="location">
 							<option>Bandung</option>
 							<option>Jakarta</option>  
 						</select>
@@ -37,9 +37,8 @@
 				</tr>
 				<tr> 
 					<td>Street Address</td>
-					<td><input type="text"/></td>
+					<td> <textarea wicket:id="address"></textarea> </td>
 				</tr>
-				
 			</table>
 		</form>
 	</fieldset>

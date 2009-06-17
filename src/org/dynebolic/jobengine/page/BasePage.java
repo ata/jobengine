@@ -43,4 +43,8 @@ public class BasePage extends WebPage implements IAjaxIndicatorAware{
 	public void setAjaxIndicatorMarkupId(String markupId){
 		ajaxIndicatorMarkupId = markupId;
 	}
+	public JobEngineAuthenticatedWebSession getJESession(){
+		return  (JobEngineAuthenticatedWebSession) 
+				JobEngineAuthenticatedWebSession.get();
+	}
 }

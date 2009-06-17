@@ -5,18 +5,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 @SuppressWarnings("serial")
+@Indexed
 @Entity
-@Table(name="pictures")
-public class Picture implements IEntity {
+@Table(name="countries")
+public class Country implements IEntity {
 	
+	@DocumentId
 	@Id
 	@GeneratedValue
 	private Long id;
 	
+	@Field
 	private String name;
-	
-	private String path;
 
 	public Long getId() {
 		return id;
@@ -33,16 +38,8 @@ public class Picture implements IEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
 	
 	
 	
-
+	
 }
