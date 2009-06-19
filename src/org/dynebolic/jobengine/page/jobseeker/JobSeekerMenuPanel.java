@@ -2,12 +2,10 @@ package org.dynebolic.jobengine.page.jobseeker;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.dynebolic.jobengine.page.employer.directory.ApplicantDirectoryPanel;
-import org.dynebolic.jobengine.page.employer.job.JobPanel;
 import org.dynebolic.jobengine.page.jobseeker.directory.JobDirectoryPanel;
 
+@SuppressWarnings("serial")
 public class JobSeekerMenuPanel extends Panel {
 	private Panel content;
 	

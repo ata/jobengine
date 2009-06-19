@@ -3,7 +3,8 @@ package org.dynebolic.jobengine.page.administrator;
 import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.link.Link;
-import org.dynebolic.jobengine.entity.Education;
+import org.dynebolic.jobengine.entity.Country;
+import org.dynebolic.jobengine.entity.EducationLevel;
 import org.dynebolic.jobengine.entity.JobCategory;
 import org.dynebolic.jobengine.entity.Location;
 import org.dynebolic.jobengine.page.BasePage;
@@ -33,10 +34,17 @@ public class AdministratorPage extends BasePage{
 			}
 			
 		});
+		add(new Link("countryLink"){
+			@Override
+			public void onClick() {
+				setResponsePage(new GenericMasterPage<Country>(Country.class));
+			}
+			
+		});
 		add(new Link("educationLink"){
 			@Override
 			public void onClick() {
-				setResponsePage(new GenericMasterPage<Education>(Education.class));
+				setResponsePage(new GenericMasterPage<EducationLevel>(EducationLevel.class));
 			}
 			
 		});

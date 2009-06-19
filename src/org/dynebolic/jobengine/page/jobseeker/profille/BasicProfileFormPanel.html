@@ -2,23 +2,23 @@
 <wicket:panel>
 	<fieldset>
 		<legend>Job Seeker Profile</legend>
-		<span>Feedback</span>
+		<span wicket:id="feedback"/>
 		<form wicket:id="form">
 			<table>
 				<tr> 
-					<td>Full Name</td>
+					<td><label>Full Name</label></td>
 					<td><input wicket:id="name" type="text" /></td>
 				</tr>
 				<tr> 
-					<td>Birth Place</td>
+					<td><label>Birth Place</label></td>
 					<td><input wicket:id="birthPlace" type="text" /></td>
 				</tr>
 				<tr> 
-					<td>Birth Date</td>
+					<td><label>Birth Date</label></td>
 					<td><input wicket:id="birthDate" type="text" /></td>
 				</tr>
 				<tr> 
-					<td>Gender</td>
+					<td><label>Gender</label></td>
 					<td>
 						<select wicket:id="gender" >
 							<option>Male</option>
@@ -27,9 +27,18 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Location</td>
+					<td>Country</td>
 					<td>
-						<selec wicket:id="location">
+						<select wicket:id="country">
+							<option>Indonesia</option>
+							<option>Singapure</option>  
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Current Location</td>
+					<td>
+						<select wicket:id="currentLocation">
 							<option>Bandung</option>
 							<option>Jakarta</option>  
 						</select>
@@ -38,6 +47,10 @@
 				<tr> 
 					<td>Street Address</td>
 					<td> <textarea wicket:id="address"></textarea> </td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input wicket:id="submit" value="save" type="submit"/></td>
 				</tr>
 			</table>
 		</form>

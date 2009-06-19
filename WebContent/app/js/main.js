@@ -1,7 +1,7 @@
 //bkLib.onDomLoaded(function() {  });
 
 document.observe('dom:loaded',function(){
-	nicEditors.allTextAreas()
+	//nicEditors.allTextAreas()
 	var advanced_search_show = false;
 	function cleanQuickSignIn(){
 		if($F('qSignUser') == '' && $F('qSignPass') == ''){

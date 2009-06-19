@@ -1,21 +1,16 @@
 package org.dynebolic.jobengine.page.jobseeker;
 
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.IAjaxIndicatorAware;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.authentication.AuthenticatedWebSession;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.PageLink;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.dynebolic.jobengine.JobEngineAuthenticatedWebSession;
 import org.dynebolic.jobengine.entity.JobSeeker;
-import org.dynebolic.jobengine.entity.User;
 import org.dynebolic.jobengine.page.BasePage;
 import org.dynebolic.jobengine.page.auth.SignInPage;
 import org.dynebolic.jobengine.page.auth.SignUpPanel;
 import org.dynebolic.jobengine.page.jobseeker.directory.JobDirectoryPanel;
-import org.dynebolic.jobengine.page.jobseeker.profille.JobSeekerProfileFormPanel;
+import org.dynebolic.jobengine.page.jobseeker.profille.ProfilePanel;
 import org.dynebolic.jobengine.page.jobseeker.search.JobSearchPanel;
 import org.dynebolic.jobengine.service.JobSeekerService;
 import org.dynebolic.jobengine.service.UserService;
@@ -62,7 +57,7 @@ public class JobSeekerPage extends BasePage implements IAjaxIndicatorAware{
 				getJESession().setUser(userService.find(getJESession().getUser().getId()));
 			}
 			if(!getJESession().getUser().getComplete()) {
-				addOrReplace(new JobSeekerProfileFormPanel("content",this));
+				addOrReplace(new ProfilePanel("content", this));
 				menu.setVisible(false);
 			}
 		}

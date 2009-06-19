@@ -1,6 +1,5 @@
 package org.dynebolic.jobengine.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,9 +24,6 @@ public class JobSeekerCertificate implements IEntity{
 	private String name;
 	
 	private String year;
-	
-	@Column(length=1000)
-	private String description;
 
 	public Long getId() {
 		return id;
@@ -52,15 +48,6 @@ public class JobSeekerCertificate implements IEntity{
 	public void setYear(String year) {
 		this.year = year;
 	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
 	
 	
 }

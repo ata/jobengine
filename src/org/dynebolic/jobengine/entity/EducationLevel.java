@@ -12,8 +12,8 @@ import org.hibernate.search.annotations.Indexed;
 @SuppressWarnings("serial")
 @Indexed
 @Entity
-@Table(name="educations")
-public class Education implements IEntity {
+@Table(name="education_levels")
+public class EducationLevel implements IEntity {
 	
 	@DocumentId
 	@Id

@@ -29,7 +29,7 @@ import org.apache.wicket.validation.validator.NumberValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 import org.dynebolic.jobengine.JobEngineAuthenticatedWebSession;
 import org.dynebolic.jobengine.entity.Employer;
-import org.dynebolic.jobengine.entity.Education;
+import org.dynebolic.jobengine.entity.EducationLevel;
 import org.dynebolic.jobengine.entity.Job;
 import org.dynebolic.jobengine.entity.JobCategory;
 import org.dynebolic.jobengine.entity.Location;
@@ -95,8 +95,8 @@ public abstract class JobMasterFormPanel extends Panel{
         fc.add(new NumberValidator.RangeValidator(1,50));
         form.add(fc);
         
-        List<Education> educations = educationService.find();
-        fc = new DropDownChoice("education",educations,choiceRenderer);
+        List<EducationLevel> educationLevels = educationService.find();
+        fc = new DropDownChoice("education",educationLevels,choiceRenderer);
         form.add(fc);
         
         fc = new TextField("ipk",Double.class);
@@ -145,8 +145,7 @@ public abstract class JobMasterFormPanel extends Panel{
 				job.clear();
 				onSubmitForm(target);
 			}
-			protected void onError(AjaxRequestTarget target, Form form)
-            {
+			protected void onError(AjaxRequestTarget target, Form form) {
                 target.addComponent(feedback);
             }
 		});

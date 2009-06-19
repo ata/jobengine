@@ -23,8 +23,10 @@ public class JobSeekerEducation implements IEntity{
 	private Long id;
 	
 	@IndexedEmbedded
-	@ManyToOne(targetEntity = Education.class)
-	private Education education;
+	@ManyToOne(targetEntity = EducationLevel.class)
+	private EducationLevel educationLevel;
+	
+	private String faculty;
 	
 	private String start;
 	
@@ -41,12 +43,12 @@ public class JobSeekerEducation implements IEntity{
 		this.id = id;
 	}
 
-	public Education getEducation() {
-		return education;
+	public EducationLevel getEducationLevel() {
+		return educationLevel;
 	}
 
-	public void setEducation(Education education) {
-		this.education = education;
+	public void setEducationLevel(EducationLevel educationLevel) {
+		this.educationLevel = educationLevel;
 	}
 
 	public String getStart() {
@@ -83,6 +85,20 @@ public class JobSeekerEducation implements IEntity{
 	public void setName(String name) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	/**
+	 * @param faculty the faculty to set
+	 */
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+
+	/**
+	 * @return the faculty
+	 */
+	public String getFaculty() {
+		return faculty;
 	}
 	
 	

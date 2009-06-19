@@ -1,9 +1,9 @@
 package org.dynebolic.jobengine.service;
 
-import org.dynebolic.jobengine.entity.Education;
+import org.dynebolic.jobengine.entity.EducationLevel;
 
-public class EducationService extends GenericService<Education> {
+public class EducationService extends GenericService<EducationLevel> {
 	public EducationService() {
-		super(Education.class);
+		super(EducationLevel.class);
 	}
 }

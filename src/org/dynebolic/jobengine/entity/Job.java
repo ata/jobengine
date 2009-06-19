@@ -72,8 +72,8 @@ public class Job implements IEntity{
 	private String description;
 	
 	@IndexedEmbedded
-	@ManyToOne(targetEntity=Education.class)
-	private Education education;
+	@ManyToOne(targetEntity=EducationLevel.class)
+	private EducationLevel educationLevel;
 	
 	@IndexedEmbedded
 	@ManyToOne(targetEntity=JobCategory.class)
@@ -168,13 +168,13 @@ public class Job implements IEntity{
 	}
 
 
-	public Education getEducation() {
-		return education;
+	public EducationLevel getEducationLevel() {
+		return educationLevel;
 	}
 
 
-	public void setEducation(Education education) {
-		this.education = education;
+	public void setEducationLevel(EducationLevel educationLevel) {
+		this.educationLevel = educationLevel;
 	}
 
 
@@ -277,7 +277,7 @@ public class Job implements IEntity{
 		this.experience = null;
 		this.additionalSkills = null;
 		this.description = null;
-		this.education = null;
+		this.educationLevel = null;
 		this.category = null;
 		this.employer = null;
 		this.location = null;

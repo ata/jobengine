@@ -3,6 +3,7 @@ package org.dynebolic.jobengine.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -32,6 +33,7 @@ public class JobSeeker implements IEntity{
 	@Field
 	private String summary;
 	
+	@Field
 	private String name;
 	
 	private Date birthDate;
@@ -42,18 +44,19 @@ public class JobSeeker implements IEntity{
 	
 	private String cellular;
 	
+	@Field
 	private String gender;
 	
 	@Field
 	private String keySkills;
 	
+	@Field
+	@Column(length=1000)
 	private String description;
 	
 	private String phone;
 	
 	private String personalWeb;
-	
-	private String photo;
 
 	@ContainedIn
 	@OneToMany(targetEntity=JobSeekerSkill.class)
@@ -62,13 +65,23 @@ public class JobSeeker implements IEntity{
 	@OneToOne(targetEntity=User.class)
 	private User user;
 	
+	private MediaAsset photo;
+	
+	private MediaAsset thumbnail;
+	
+	
 	@IndexedEmbedded
 	@ManyToOne(targetEntity=Location.class)
 	private Location currentLocation;
 	
 	@IndexedEmbedded
+	@ManyToOne
+	private Country country;
+	
+	@IndexedEmbedded
 	@OneToOne(targetEntity=JobSeekerEducation.class)
 	private JobSeekerEducation lastEducation;
+	
 	
 	@ContainedIn
 	@OneToMany(targetEntity=JobSeekerEducation.class)
@@ -152,14 +165,6 @@ public class JobSeeker implements IEntity{
 
 	public void setPersonalWeb(String personalWeb) {
 		this.personalWeb = personalWeb;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 
 	public User getUser() {
@@ -306,6 +311,48 @@ public class JobSeeker implements IEntity{
 	 */
 	public String getGender() {
 		return gender;
+	}
+
+	/**
+	 * @param country the country to set
+	 */
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
+	/**
+	 * @return the country
+	 */
+	public Country getCountry() {
+		return country;
+	}
+
+	/**
+	 * @param thumbnail the thumbnail to set
+	 */
+	public void setThumbnail(MediaAsset thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
+	/**
+	 * @return the thumbnail
+	 */
+	public MediaAsset getThumbnail() {
+		return thumbnail;
+	}
+
+	/**
+	 * @param photo the photo to set
+	 */
+	public void setPhoto(MediaAsset photo) {
+		this.photo = photo;
+	}
+
+	/**
+	 * @return the photo
+	 */
+	public MediaAsset getPhoto() {
+		return photo;
 	}
 	
 	
