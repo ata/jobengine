@@ -1,5 +1,6 @@
 package org.dynebolic.jobengine.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,58 +17,58 @@ import org.hibernate.search.annotations.Indexed;
 @Entity
 @Table(name="job_seeker_certificates")
 public class JobSeekerCertificate implements IEntity{
-	
-	@DocumentId
-	@Id
-	@GeneratedValue
-	private Long id;
-	
-	@Field
-	private String name;
-	
-	@Column(length=4)
-	private Integer year;
-	
-	@ManyToOne
-	private JobSeeker jobSeeker;
-	
-	public Long getId() {
-		return id;
-	}
+    
+    @DocumentId
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+    @Field
+    private String name;
+    
+    @Column(length=4)
+    private Integer year;
+    
+    @ManyToOne(cascade=CascadeType.MERGE)
+    private JobSeeker jobSeeker;
+    
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setJobSeeker(JobSeeker jobSeeker) {
-		this.jobSeeker = jobSeeker;
-	}
+    public void setJobSeeker(JobSeeker jobSeeker) {
+        this.jobSeeker = jobSeeker;
+    }
 
-	public JobSeeker getJobSeeker() {
-		return jobSeeker;
-	}
+    public JobSeeker getJobSeeker() {
+        return jobSeeker;
+    }
 
-	/**
-	 * @param year the year to set
-	 */
-	public void setYear(Integer year) {
-		this.year = year;
-	}
+    /**
+     * @param year the year to set
+     */
+    public void setYear(Integer year) {
+        this.year = year;
+    }
 
-	/**
-	 * @return the year
-	 */
-	public Integer getYear() {
-		return year;
-	}
-	
-	
+    /**
+     * @return the year
+     */
+    public Integer getYear() {
+        return year;
+    }
+    
+    
 }

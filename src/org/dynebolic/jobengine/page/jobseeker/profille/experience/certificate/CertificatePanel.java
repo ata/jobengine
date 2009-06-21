@@ -1,4 +1,4 @@
-package org.dynebolic.jobengine.page.jobseeker.profille.carier.carier;
+package org.dynebolic.jobengine.page.jobseeker.profille.experience.certificate;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -8,26 +8,28 @@ import org.dynebolic.jobengine.page.BasePanel;
 import org.dynebolic.library.AjaxLazyLoadPanel;
 
 @SuppressWarnings("serial")
-public class CarierPanel extends BasePanel{
+public class CertificatePanel extends BasePanel{
 	private WebMarkupContainer formContainer;
 	private WebMarkupContainer listContainer;
 	private Component form;
 	private Component list;
-	public CarierPanel(String id) {
+	public CertificatePanel(String id) {
 		super(id);
 		
 		listContainer = new WebMarkupContainer("listContainer");
 		listContainer.setOutputMarkupId(true);
 		add(listContainer);
-		//list = getListPanel();
-		list = new CarierListPanel("listPanel"){
+		list = getListPanel();
+		
+		/*
+		list = new CertificateListPanel("listPanel"){
 			protected void onDeleteItem(AjaxRequestTarget target) {
 				list = getListPanel();
 				listContainer.addOrReplace(list);
 				target.addComponent(listContainer);
 			}
-			
 		};
+		*/
 		listContainer.add(list);
 		
 		formContainer = new WebMarkupContainer("formContainer");
@@ -50,7 +52,7 @@ public class CarierPanel extends BasePanel{
 	public Component getFormPanel() {
 		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("formPanel"){
 			public Component getLazyLoadComponent(String id) {
-				return new CarierFormPanel(id){
+				return new CertificateFormPanel(id){
 					protected void onSubmitAjax(AjaxRequestTarget target) {
 						
 						list = getListPanel();
@@ -73,7 +75,9 @@ public class CarierPanel extends BasePanel{
 	public Component getListPanel() {
 		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("listPanel"){
 			public Component getLazyLoadComponent(String id) {
-				return new CarierListPanel(id){
+				return new CertificateListPanel(id){
+
+					@Override
 					protected void onDeleteItem(AjaxRequestTarget target) {
 						list = getListPanel();
 						listContainer.addOrReplace(list);

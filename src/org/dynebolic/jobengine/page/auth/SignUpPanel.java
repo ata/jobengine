@@ -2,7 +2,6 @@ package org.dynebolic.jobengine.page.auth;
 
 import java.util.List;
 
-import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
@@ -10,7 +9,6 @@ import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.PasswordTextField;
-import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.form.validation.EqualPasswordInputValidator;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -23,12 +21,9 @@ import org.apache.wicket.validation.ValidationError;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 import org.dynebolic.jobengine.entity.Employer;
-import org.dynebolic.jobengine.entity.JobCategory;
 import org.dynebolic.jobengine.entity.JobSeeker;
 import org.dynebolic.jobengine.entity.Role;
 import org.dynebolic.jobengine.entity.User;
-import org.dynebolic.jobengine.page.BasePage;
-import org.dynebolic.jobengine.page.jobseeker.JobSeekerPage;
 import org.dynebolic.jobengine.service.EmployerService;
 import org.dynebolic.jobengine.service.JobSeekerService;
 import org.dynebolic.jobengine.service.RoleService;
@@ -40,7 +35,8 @@ public class SignUpPanel extends Panel {
 	private String validatePassword;
 	private RoleService roleService = new RoleService();
 	private UserService userService = new UserService();
-	
+	private JobSeekerService jobSeekerService = new JobSeekerService();
+	private EmployerService employerService = new EmployerService();
 	public SignUpPanel(String id) {
 		super(id);
 		user = new User();
@@ -105,13 +101,11 @@ public class SignUpPanel extends Panel {
 		PasswordTextField password = new PasswordTextField("password");
 		password.setRequired(true);
 		password.add(StringValidator.minimumLength(6));
-		//form.add(password);
 		
 		PasswordTextField validatePassword = 
 			new PasswordTextField("validatePassword",new PropertyModel(this,"validatePassword"));
 		
 		validatePassword.setRequired(true);
-		//form.add(validatePassword);
 		
 		
 		form.add(new EqualPasswordInputValidator(password,validatePassword));
@@ -121,8 +115,18 @@ public class SignUpPanel extends Panel {
 
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form form) {
-				user.setComplete(true);
-				userService.save(user);
+				user.setComplete(false);
+				if(user.getRole().getName().equalsIgnoreCase("JobSeeker")){
+					JobSeeker jobSeeker = new JobSeeker();
+					jobSeeker.setName(user.getName());
+					jobSeeker.setUser(user);
+					jobSeekerService.save(jobSeeker);
+				} else {
+					Employer employer = new Employer();
+					employer.setUser(user);
+					employer.setName(user.getName());
+					employerService.save(employer);
+				}
 				target.addComponent(feedback);
 				target.appendJavascript("Modalbox.show($('successRegister'))");
 				

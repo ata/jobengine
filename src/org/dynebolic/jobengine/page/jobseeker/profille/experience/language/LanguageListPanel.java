@@ -1,4 +1,4 @@
-package org.dynebolic.jobengine.page.jobseeker.profille.carier.language;
+package org.dynebolic.jobengine.page.jobseeker.profille.experience.language;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public abstract class LanguageListPanel extends BasePanel{
 		super(id);
 		languages = languageService.find(getJESession().getUser().getJobSeeker());
 		final ListView eachView = new ListView("eachView", languages){
-			protected void populateItem(ListItem item) {
+			protected void populateItem(final ListItem item) {
 				final JobSeekerLanguage language = (JobSeekerLanguage) item.getModelObject();
 				item.setModel(new CompoundPropertyModel(language));
 				item.add(new Label("language.name"));

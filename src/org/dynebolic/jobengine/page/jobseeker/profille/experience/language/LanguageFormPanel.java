@@ -1,4 +1,4 @@
-package org.dynebolic.jobengine.page.jobseeker.profille.carier.language;
+package org.dynebolic.jobengine.page.jobseeker.profille.experience.language;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +9,11 @@ import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
-import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.validation.validator.NumberValidator;
 import org.dynebolic.jobengine.entity.JobSeekerLanguage;
-import org.dynebolic.jobengine.entity.JobSeekerSkill;
-import org.dynebolic.jobengine.entity.Language;
 import org.dynebolic.jobengine.page.BasePanel;
 import org.dynebolic.jobengine.service.JobSeekerLanguageService;
-import org.dynebolic.jobengine.service.JobSeekerSkillService;
 import org.dynebolic.jobengine.service.LanguageService;
 
 @SuppressWarnings("serial")
@@ -45,8 +40,8 @@ public abstract class LanguageFormPanel extends BasePanel{
 		
 		
 		List<String> levels = new ArrayList<String>();
-		levels.add("Pasif");
-		levels.add("Aktif");
+		levels.add("Pasive");
+		levels.add("Active");
 		fc = new DropDownChoice("level",levels);
 		fc.setRequired(true);
 		form.add(fc);

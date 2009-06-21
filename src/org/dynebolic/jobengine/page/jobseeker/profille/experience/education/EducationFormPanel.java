@@ -1,4 +1,4 @@
-package org.dynebolic.jobengine.page.jobseeker.profille.carier.education;
+package org.dynebolic.jobengine.page.jobseeker.profille.experience.education;
 
 import java.util.List;
 
@@ -70,18 +70,6 @@ public abstract class EducationFormPanel extends BasePanel{
 				jobSeekerEducation.setJobSeeker(getJESession().getUser().getJobSeeker());
 				jobSeekerEducationService.save(jobSeekerEducation);
 				onSubmitAjax(target);
-				/*
-				AjaxLazyLoadPanel ajaxLoad = new AjaxLazyLoadPanel("educationListPanel") {
-					public Component getLazyLoadComponent(String id) {
-						return new LanguageListPanel(id);
-					}
-				};
-				ajaxLoad.setOutputMarkupId(true);
-				panel.addOrReplace(ajaxLoad);
-				target.addComponent(ajaxLoad);
-				*/
-				//panel.loadEducationListPanel(target);
-				//panel.getForm().setVisible(false);
 				
 			}
 

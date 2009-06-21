@@ -1,5 +1,6 @@
 package org.dynebolic.jobengine.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,64 +17,64 @@ import org.hibernate.search.annotations.IndexedEmbedded;
 @Entity
 @Table(name="job_seeker_languages")
 public class JobSeekerLanguage implements IEntity {
-	
-	@DocumentId
-	@Id
-	@GeneratedValue
-	private Long id;
-	
-	@IndexedEmbedded
-	@ManyToOne
-	private Language language;
-	
-	@Field
-	private String level;
-	
-	@ManyToOne
-	private JobSeeker jobSeeker;
+    
+    @DocumentId
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+    @IndexedEmbedded
+    @ManyToOne
+    private Language language;
+    
+    @Field
+    private String level;
+    
+    @ManyToOne(cascade=CascadeType.MERGE)
+    private JobSeeker jobSeeker;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Language getLanguage() {
-		return language;
-	}
+    public Language getLanguage() {
+        return language;
+    }
 
-	public void setLanguage(Language language) {
-		this.language = language;
-	}
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String getName() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void setName(String name) {
+        // TODO Auto-generated method stub
+        
+    }
 
-	public void setLevel(String level) {
-		this.level = level;
-	}
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
-	public String getLevel() {
-		return level;
-	}
+    public String getLevel() {
+        return level;
+    }
 
-	public void setJobSeeker(JobSeeker jobSeeker) {
-		this.jobSeeker = jobSeeker;
-	}
+    public void setJobSeeker(JobSeeker jobSeeker) {
+        this.jobSeeker = jobSeeker;
+    }
 
-	public JobSeeker getJobSeeker() {
-		return jobSeeker;
-	}
-	
+    public JobSeeker getJobSeeker() {
+        return jobSeeker;
+    }
+    
 }

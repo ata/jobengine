@@ -1,4 +1,4 @@
-package org.dynebolic.jobengine.page.jobseeker.profille.carier.carier;
+package org.dynebolic.jobengine.page.jobseeker.profille.experience.carier;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public abstract class CarierListPanel extends BasePanel{
 		super(id);
 		cariers = carierService.find(getJESession().getUser().getJobSeeker());
 		final ListView eachView = new ListView("eachView", cariers){
-			protected void populateItem(ListItem item) {
+			protected void populateItem(final ListItem item) {
 				final JobSeekerCarier carier = (JobSeekerCarier) item.getModelObject();
 				item.setModel(new CompoundPropertyModel(carier));
 				item.add(new Label("institute"));

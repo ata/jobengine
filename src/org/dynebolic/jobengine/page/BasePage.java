@@ -1,7 +1,6 @@
 package org.dynebolic.jobengine.page;
 
 import org.apache.wicket.ajax.IAjaxIndicatorAware;
-import org.apache.wicket.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.dynebolic.jobengine.JobEngineAuthenticatedWebSession;
@@ -9,11 +8,9 @@ import org.dynebolic.jobengine.page.auth.QuickSignInPanel;
 
 public class BasePage extends WebPage implements IAjaxIndicatorAware{
 	protected String ajaxIndicatorMarkupId = "ajaxIndicator";
-	protected Roles roles;
 	protected MenuPanel menuPanel;
 	
 	public BasePage(){
-		roles = JobEngineAuthenticatedWebSession.get().getRoles();
 		// Javascript
 		add(new WebMarkupContainer("prototypejs"));
 		add(new WebMarkupContainer("scriptaculousjs"));

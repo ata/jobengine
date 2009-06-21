@@ -15,6 +15,8 @@ public abstract class BasicInfoViewPanel extends BasePanel{
 	public BasicInfoViewPanel(String id) {
 		super(id);
 		
+		System.out.println(getJESession().getUser());
+		
 		add(new Label("name",jobSeeker.getName()));
 		add(new Label("birthPlace",jobSeeker.getBirthPlace()));
 		add(new Label("birthDate",jobSeeker.getBirthDate()!=null?dateFormat.format(jobSeeker.getBirthDate()):"-"));

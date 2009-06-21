@@ -1,7 +1,6 @@
 package org.dynebolic.jobengine.page.employer;
 
 
-import org.apache.wicket.ajax.IAjaxIndicatorAware;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.dynebolic.jobengine.page.BasePage;
@@ -19,7 +18,7 @@ public class EmployerPage extends BasePage{
 		add(menu);
 		
 		menu.setVisible(false);
-		if(roles.toString().equalsIgnoreCase("Employer")){
+		if(getJESession().getRoles().toString().equalsIgnoreCase("Employer")){
 			menu.setVisible(true);
 		}
 		

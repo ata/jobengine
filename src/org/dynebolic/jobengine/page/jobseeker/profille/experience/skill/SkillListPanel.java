@@ -1,4 +1,4 @@
-package org.dynebolic.jobengine.page.jobseeker.profille.carier.skill;
+package org.dynebolic.jobengine.page.jobseeker.profille.experience.skill;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public abstract class SkillListPanel extends BasePanel{
 		super(id);
 		skills = skillService.find(getJESession().getUser().getJobSeeker());
 		final ListView eachView = new ListView("eachView", skills){
-			protected void populateItem(ListItem item) {
+			protected void populateItem(final ListItem item) {
 				final JobSeekerSkill skill = (JobSeekerSkill) item.getModelObject();
 				item.setModel(new CompoundPropertyModel(skill));
 				item.add(new Label("name"));

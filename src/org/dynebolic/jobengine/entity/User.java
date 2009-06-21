@@ -2,6 +2,7 @@ package org.dynebolic.jobengine.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -14,16 +15,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name="users")
 public class User implements IEntity{
-	private static final long serialVersionUID = 4523097555016898123L;
-	
-	@Id
+    private static final long serialVersionUID = 4523097555016898123L;
+    
+    @Id
     @GeneratedValue
     private Long id;
     
-	@Column(unique=true)
+    @Column(unique=true)
     private String username;
     
-	@Column(unique=true)
+    @Column(unique=true)
     private String email;
     
     private String password;
@@ -32,142 +33,142 @@ public class User implements IEntity{
     
     private Boolean complete = false;
     
-    @OneToMany(mappedBy="messageTo")
+    @OneToMany(mappedBy="messageTo",cascade=CascadeType.MERGE)
     private List<Message> inboxMessages;
     
-    @OneToMany(mappedBy="messageFrom")
+    @OneToMany(mappedBy="messageFrom",cascade=CascadeType.MERGE)
     private List<Message> sendMessage;
     
-    @ManyToOne(targetEntity=Role.class)
+    @ManyToOne(targetEntity=Role.class,cascade=CascadeType.MERGE)
     private Role role;
     
-    @OneToOne(mappedBy="user")
+    @OneToOne(mappedBy="user",cascade=CascadeType.MERGE)
     private Employer employer;
     
-    @OneToOne(mappedBy="user")
+    @OneToOne(mappedBy="user",cascade=CascadeType.MERGE)
     private JobSeeker jobSeeker;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password =  password;
-	}
+    public void setPassword(String password) {
+        this.password =  password;
+    }
 
-	public Role getRole() {
-		return role;
-	}
+    public Role getRole() {
+        return role;
+    }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	/**
-	 * @param employer the employer to set
-	 */
-	public void setEmployer(Employer employer) {
-		this.employer = employer;
-	}
+    /**
+     * @param employer the employer to set
+     */
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
+    }
 
-	/**
-	 * @return the employer
-	 */
-	public Employer getEmployer() {
-		return employer;
-	}
+    /**
+     * @return the employer
+     */
+    public Employer getEmployer() {
+        return employer;
+    }
 
-	@Override
-	public String getName() {
-		return name;
-	}
+    @Override
+    public String getName() {
+        return name;
+    }
 
-	@Override
-	public void setName(String name) {
-		this.name = name;
-		
-	}
+    @Override
+    public void setName(String name) {
+        this.name = name;
+        
+    }
 
-	/**
-	 * @param jobSeeker the jobSeeker to set
-	 */
-	public void setJobSeeker(JobSeeker jobSeeker) {
-		this.jobSeeker = jobSeeker;
-	}
+    /**
+     * @param jobSeeker the jobSeeker to set
+     */
+    public void setJobSeeker(JobSeeker jobSeeker) {
+        this.jobSeeker = jobSeeker;
+    }
 
-	/**
-	 * @return the jobSeeker
-	 */
-	public JobSeeker getJobSeeker() {
-		return jobSeeker;
-	}
+    /**
+     * @return the jobSeeker
+     */
+    public JobSeeker getJobSeeker() {
+        return jobSeeker;
+    }
 
-	/**
-	 * @param inboxMessages the inboxMessages to set
-	 */
-	public void setInboxMessages(List<Message> inboxMessages) {
-		this.inboxMessages = inboxMessages;
-	}
+    /**
+     * @param inboxMessages the inboxMessages to set
+     */
+    public void setInboxMessages(List<Message> inboxMessages) {
+        this.inboxMessages = inboxMessages;
+    }
 
-	/**
-	 * @return the inboxMessages
-	 */
-	public List<Message> getInboxMessages() {
-		return inboxMessages;
-	}
+    /**
+     * @return the inboxMessages
+     */
+    public List<Message> getInboxMessages() {
+        return inboxMessages;
+    }
 
-	/**
-	 * @param sendMessage the sendMessage to set
-	 */
-	public void setSendMessage(List<Message> sendMessage) {
-		this.sendMessage = sendMessage;
-	}
+    /**
+     * @param sendMessage the sendMessage to set
+     */
+    public void setSendMessage(List<Message> sendMessage) {
+        this.sendMessage = sendMessage;
+    }
 
-	/**
-	 * @return the sendMessage
-	 */
-	public List<Message> getSendMessage() {
-		return sendMessage;
-	}
+    /**
+     * @return the sendMessage
+     */
+    public List<Message> getSendMessage() {
+        return sendMessage;
+    }
 
-	/**
-	 * @param complete the complete to set
-	 */
-	public void setComplete(Boolean complete) {
-		this.complete = complete;
-	}
+    /**
+     * @param complete the complete to set
+     */
+    public void setComplete(Boolean complete) {
+        this.complete = complete;
+    }
 
-	/**
-	 * @return the complete
-	 */
-	public Boolean getComplete() {
-		return complete;
-	}
+    /**
+     * @return the complete
+     */
+    public Boolean getComplete() {
+        return complete;
+    }
     
     
     

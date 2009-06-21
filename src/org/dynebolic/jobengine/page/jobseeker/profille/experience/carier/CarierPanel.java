@@ -1,41 +1,42 @@
-package org.dynebolic.jobengine.page.jobseeker.profille.carier.education;
+package org.dynebolic.jobengine.page.jobseeker.profille.experience.carier;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.dynebolic.jobengine.page.BasePanel;
+import org.dynebolic.jobengine.service.JobSeekerService;
 import org.dynebolic.library.AjaxLazyLoadPanel;
 
 @SuppressWarnings("serial")
-public class EducationPanel extends BasePanel{
+public class CarierPanel extends BasePanel{
+	private JobSeekerService jobSeekerService = new JobSeekerService();
 	private WebMarkupContainer formContainer;
 	private WebMarkupContainer listContainer;
 	private Component form;
 	private Component list;
-	public EducationPanel(String id) {
+	public CarierPanel(String id) {
 		super(id);
 		
 		listContainer = new WebMarkupContainer("listContainer");
 		listContainer.setOutputMarkupId(true);
 		add(listContainer);
-		
-		//list = getEducationListPanel();
-		
-		list = new EducationListPanel("educationListPanel"){
+		list = getListPanel();
+		/*
+		list = new CarierListPanel("listPanel"){
 			protected void onDeleteItem(AjaxRequestTarget target) {
-				list = getEducationListPanel();
+				list = getListPanel();
 				listContainer.addOrReplace(list);
 				target.addComponent(listContainer);
 			}
-		};
-		
+			
+		};*/
 		listContainer.add(list);
 		
 		formContainer = new WebMarkupContainer("formContainer");
 		formContainer.setOutputMarkupId(true);
 		add(formContainer);
-		form = getEduationFormPanel();
+		form = getFormPanel();
 		form.setVisible(false);
 		formContainer.add(form);
 		
@@ -49,17 +50,16 @@ public class EducationPanel extends BasePanel{
 		
 	}
 	
-	public Component getEduationFormPanel() {
-		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("educationFormPanel"){
+	public Component getFormPanel() {
+		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("formPanel"){
 			public Component getLazyLoadComponent(String id) {
-				return new EducationFormPanel(id){
+				return new CarierFormPanel(id){
 					protected void onSubmitAjax(AjaxRequestTarget target) {
-						
-						list = getEducationListPanel();
+						list = getListPanel();
 						listContainer.addOrReplace(list);
 						target.addComponent(listContainer);
 						
-						form = getEduationFormPanel();
+						form = getFormPanel();
 						form.setVisible(false);
 						formContainer.addOrReplace(form);
 						target.addComponent(formContainer);
@@ -72,14 +72,12 @@ public class EducationPanel extends BasePanel{
 		
 	}
 	
-	public Component getEducationListPanel() {
-		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("educationListPanel"){
+	public Component getListPanel() {
+		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("listPanel"){
 			public Component getLazyLoadComponent(String id) {
-				return new EducationListPanel(id){
-
-					@Override
+				return new CarierListPanel(id){
 					protected void onDeleteItem(AjaxRequestTarget target) {
-						list = getEducationListPanel();
+						list = getListPanel();
 						listContainer.addOrReplace(list);
 						target.addComponent(listContainer);
 					}

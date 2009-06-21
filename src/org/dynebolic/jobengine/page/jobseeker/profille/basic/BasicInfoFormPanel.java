@@ -22,13 +22,10 @@ import org.dynebolic.jobengine.page.BasePanel;
 import org.dynebolic.jobengine.service.JobSeekerService;
 import org.dynebolic.jobengine.service.CountryService;
 import org.dynebolic.jobengine.service.LocationService;
-import org.dynebolic.jobengine.service.UserService;
-
 @SuppressWarnings("serial")
 public abstract class BasicInfoFormPanel extends BasePanel{
 	private LocationService locationService = new LocationService();
 	private JobSeekerService jobSeekerService = new JobSeekerService();
-	private UserService userService = new UserService();
 	private CountryService countryService = new CountryService();
 	private JobSeeker jobSeeker = getJESession().getUser().getJobSeeker();
 	
@@ -84,23 +81,9 @@ public abstract class BasicInfoFormPanel extends BasePanel{
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form form) {
 				jobSeeker.getUser().setName(jobSeeker.getName());
-				jobSeeker.getUser().setComplete(true);
 				jobSeekerService.save(jobSeeker);
-				userService.save(jobSeeker.getUser());
-				getJESession().setUser(userService.find(jobSeeker.getUser().getId()));
+				getJESession().setUser(jobSeeker.getUser());
 				onAjaxSubmit(target);
-				//BasicInfoPanel basicInfo = new BasicInfoPanel("basicInfo", panel, jobSeeker);
-				/*
-				Component basicInfo = new AjaxLazyLoadPanel("basicInfo"){
-					public Component getLazyLoadComponent(String id) {
-						return new BasicInfoPanel("basicInfo", panel, jobSeeker);
-					}
-					
-				};
-				
-				panel.addOrReplace(basicInfo);
-				basicInfo.setOutputMarkupId(true);
-				target.addComponent(basicInfo);*/
 				
 			}
 			protected void onError(AjaxRequestTarget target, Form form){

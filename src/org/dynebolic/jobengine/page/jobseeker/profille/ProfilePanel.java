@@ -2,12 +2,11 @@ package org.dynebolic.jobengine.page.jobseeker.profille;
 
 import org.dynebolic.jobengine.page.BasePanel;
 import org.dynebolic.jobengine.page.jobseeker.profille.basic.BasicInfoPanel;
-import org.dynebolic.jobengine.page.jobseeker.profille.carier.PreferLocationPanel;
-import org.dynebolic.jobengine.page.jobseeker.profille.carier.carier.CarierPanel;
-import org.dynebolic.jobengine.page.jobseeker.profille.carier.certificate.CertificatePanel;
-import org.dynebolic.jobengine.page.jobseeker.profille.carier.education.EducationPanel;
-import org.dynebolic.jobengine.page.jobseeker.profille.carier.language.LanguagePanel;
-import org.dynebolic.jobengine.page.jobseeker.profille.carier.skill.SkillPanel;
+import org.dynebolic.jobengine.page.jobseeker.profille.experience.carier.CarierPanel;
+import org.dynebolic.jobengine.page.jobseeker.profille.experience.certificate.CertificatePanel;
+import org.dynebolic.jobengine.page.jobseeker.profille.experience.education.EducationPanel;
+import org.dynebolic.jobengine.page.jobseeker.profille.experience.language.LanguagePanel;
+import org.dynebolic.jobengine.page.jobseeker.profille.experience.skill.SkillPanel;
 
 @SuppressWarnings("serial")
 public class ProfilePanel extends BasePanel{
@@ -19,7 +18,5 @@ public class ProfilePanel extends BasePanel{
 		add(new CarierPanel("carierPanel"));
 		add(new SkillPanel("skillPanel"));
 		add(new LanguagePanel("languagePanel"));
-		add(new PreferLocationPanel("preferLocationPanel"));
-		
 	}
 }

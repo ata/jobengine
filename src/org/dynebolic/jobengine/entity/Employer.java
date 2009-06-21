@@ -1,5 +1,6 @@
 package org.dynebolic.jobengine.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,136 +17,143 @@ import org.hibernate.search.annotations.Indexed;
 @Entity
 @Table(name="employers")
 public class Employer implements IEntity{
-	
-	@DocumentId
-	@Id
-	@GeneratedValue
-	private Long id;
-	
-	@Field
-	private String name;
-	
-	@Field
-	private String address;
-	
-	private String email;
-	
-	private String phone;
-	
-	private Boolean visibleAddress;
-	
-	private Boolean visibleEmail;
-	
-	private Boolean visiblePhone;
-	
-	private Boolean isMessage;
-	
-	@OneToOne(targetEntity=User.class)
-	private User user;
-	
-	@ManyToOne(targetEntity=Location.class)
-	private Location location;
-	
-	public Long getId() {
-		return id;
-	}
+    
+    @DocumentId
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+    @Field
+    private String name;
+    
+    @Field
+    private String address;
+    
+    private String email;
+    
+    private String phone;
+    
+    private Boolean visibleAddress;
+    
+    private Boolean visibleEmail;
+    
+    private Boolean visiblePhone;
+    
+    private Boolean isMessage;
+    
+    @OneToOne(cascade=CascadeType.MERGE)
+    private User user;
+    
+    @ManyToOne(cascade=CascadeType.MERGE)
+    private Location location;
+    
+    public Employer() {
+        
+    }
+    public Employer(String name) {
+        this.name = name;
+    }
+    
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public Location getLocation() {
-		return location;
-	}
+    public Location getLocation() {
+        return location;
+    }
 
-	public void setLocation(Location location) {
-		this.location = location;
-	}
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public Boolean getVisibleAddress() {
-		return visibleAddress;
-	}
+    public Boolean getVisibleAddress() {
+        return visibleAddress;
+    }
 
-	public void setVisibleAddress(Boolean visibleAddress) {
-		this.visibleAddress = visibleAddress;
-	}
+    public void setVisibleAddress(Boolean visibleAddress) {
+        this.visibleAddress = visibleAddress;
+    }
 
-	public Boolean getVisibleEmail() {
-		return visibleEmail;
-	}
+    public Boolean getVisibleEmail() {
+        return visibleEmail;
+    }
 
-	public void setVisibleEmail(Boolean visibleEmail) {
-		this.visibleEmail = visibleEmail;
-	}
+    public void setVisibleEmail(Boolean visibleEmail) {
+        this.visibleEmail = visibleEmail;
+    }
 
-	public Boolean getVisiblePhone() {
-		return visiblePhone;
-	}
+    public Boolean getVisiblePhone() {
+        return visiblePhone;
+    }
 
-	public void setVisiblePhone(Boolean visiblePhone) {
-		this.visiblePhone = visiblePhone;
-	}
+    public void setVisiblePhone(Boolean visiblePhone) {
+        this.visiblePhone = visiblePhone;
+    }
 
-	/**
-	 * @param isMessage the isMessage to set
-	 */
-	public void setIsMessage(Boolean isMessage) {
-		this.isMessage = isMessage;
-	}
+    /**
+     * @param isMessage the isMessage to set
+     */
+    public void setIsMessage(Boolean isMessage) {
+        this.isMessage = isMessage;
+    }
 
-	/**
-	 * @return the isMessage
-	 */
-	public Boolean getIsMessage() {
-		return isMessage;
-	}
+    /**
+     * @return the isMessage
+     */
+    public Boolean getIsMessage() {
+        return isMessage;
+    }
 
-	/**
-	 * @param user the user to set
-	 */
-	public void setUser(User user) {
-		this.user = user;
-	}
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	/**
-	 * @return the user
-	 */
-	public User getUser() {
-		return user;
-	}
-	
-	
-	
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+    
+    
+    
 }

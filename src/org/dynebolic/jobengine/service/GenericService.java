@@ -80,6 +80,7 @@ public class GenericService<E extends IEntity> implements IService<E> {
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		em.merge(object);
+		//em.refresh(object);
 		em.flush();
 		et.commit();
 		em.close();
@@ -91,8 +92,9 @@ public class GenericService<E extends IEntity> implements IService<E> {
 		em = EMUtil.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
-		for (E group : list) {
-			em.merge(group);
+		for (E object : list) {
+			em.merge(object);
+			//em.refresh(object);
 			em.flush();
 		}
 		et.commit();

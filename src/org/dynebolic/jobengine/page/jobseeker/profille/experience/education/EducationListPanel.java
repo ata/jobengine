@@ -1,4 +1,4 @@
-package org.dynebolic.jobengine.page.jobseeker.profille.carier.education;
+package org.dynebolic.jobengine.page.jobseeker.profille.experience.education;
 
 import java.util.List;
 
@@ -21,8 +21,9 @@ public abstract class EducationListPanel extends BasePanel{
 		super(id);
 		educations = jobSeekerEducationService.find(getJESession().getUser().getJobSeeker());
 		final ListView eachEducation = new ListView("eachEducation", educations){
-			protected void populateItem(ListItem item) {
-				final JobSeekerEducation education = (JobSeekerEducation) item.getModelObject();
+			protected void populateItem(final ListItem item) {
+				final JobSeekerEducation education = 
+					(JobSeekerEducation) item.getModelObject();
 				item.setModel(new CompoundPropertyModel(education));
 				item.add(new Label("level.name"));
 				item.add(new Label("faculty"));

@@ -1,4 +1,4 @@
-package org.dynebolic.jobengine.page.jobseeker.profille.carier.certificate;
+package org.dynebolic.jobengine.page.jobseeker.profille.experience.certificate;
 
 import java.util.List;
 
@@ -14,14 +14,16 @@ import org.dynebolic.jobengine.service.JobSeekerCertificateService;
 
 @SuppressWarnings("serial")
 public abstract class CertificateListPanel extends BasePanel{
-	private JobSeekerCertificateService certificateService = new JobSeekerCertificateService();
+	private JobSeekerCertificateService certificateService = 
+		new JobSeekerCertificateService();
 	private List<JobSeekerCertificate> certificates;
 	public CertificateListPanel(String id) {
 		super(id);
 		certificates = certificateService.find(getJESession().getUser().getJobSeeker());
 		final ListView eachView = new ListView("eachView", certificates){
-			protected void populateItem(ListItem item) {
-				final JobSeekerCertificate certificate = (JobSeekerCertificate) item.getModelObject();
+			protected void populateItem(final ListItem item) {
+				final JobSeekerCertificate certificate = 
+					(JobSeekerCertificate) item.getModelObject();
 				item.setModel(new CompoundPropertyModel(certificate));
 				item.add(new Label("name"));
 				item.add(new Label("year"));
