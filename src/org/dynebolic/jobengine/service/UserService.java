@@ -7,6 +7,7 @@ import org.dynebolic.jobengine.entity.User;
 import org.dynebolic.jobengine.hibernate.support.EMUtil;
 
 
+@SuppressWarnings("serial")
 public class UserService extends GenericService<User>{
 	public UserService() {
 		super(User.class);

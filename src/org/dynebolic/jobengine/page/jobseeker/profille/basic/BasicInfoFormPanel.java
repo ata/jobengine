@@ -1,4 +1,4 @@
-package org.dynebolic.jobengine.page.jobseeker.profille;
+package org.dynebolic.jobengine.page.jobseeker.profille.basic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,26 +14,26 @@ import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.dynebolic.jobengine.entity.Country;
 import org.dynebolic.jobengine.entity.JobSeeker;
 import org.dynebolic.jobengine.entity.Location;
-import org.dynebolic.jobengine.page.BasePage;
+import org.dynebolic.jobengine.page.BasePanel;
 import org.dynebolic.jobengine.service.JobSeekerService;
+import org.dynebolic.jobengine.service.CountryService;
 import org.dynebolic.jobengine.service.LocationService;
 import org.dynebolic.jobengine.service.UserService;
 
-public class BasicProfileFormPanel extends Panel{
-	
-	private JobSeeker jobSeeker;
+@SuppressWarnings("serial")
+public abstract class BasicInfoFormPanel extends BasePanel{
 	private LocationService locationService = new LocationService();
 	private JobSeekerService jobSeekerService = new JobSeekerService();
 	private UserService userService = new UserService();
+	private CountryService countryService = new CountryService();
+	private JobSeeker jobSeeker = getJESession().getUser().getJobSeeker();
 	
-	public BasicProfileFormPanel(String id, final BasePage page) {
+	public BasicInfoFormPanel(String id) {
 		super(id);
-		jobSeeker = page.getJESession().getUser().getJobSeeker();
-		//jobSeeker.setName(page.getJESession().getUser().getName());
 		
 		
 		final FeedbackPanel feedback = new FeedbackPanel("feedback");
@@ -65,6 +65,11 @@ public class BasicProfileFormPanel extends Panel{
 		fc.setRequired(true);
 		form.add(fc);
 		
+		List<Country> countries = countryService.find();
+        fc = new DropDownChoice("country",countries,new ChoiceRenderer("name","id"));
+        fc.setRequired(true);
+        form.add(fc);
+		
 		List<Location> locations = locationService.find();
         fc = new DropDownChoice("currentLocation",locations,new ChoiceRenderer("name","id"));
         fc.setRequired(true);
@@ -78,11 +83,24 @@ public class BasicProfileFormPanel extends Panel{
 
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form form) {
-				
 				jobSeeker.getUser().setName(jobSeeker.getName());
+				jobSeeker.getUser().setComplete(true);
 				jobSeekerService.save(jobSeeker);
 				userService.save(jobSeeker.getUser());
-				target.addComponent(feedback);
+				getJESession().setUser(userService.find(jobSeeker.getUser().getId()));
+				onAjaxSubmit(target);
+				//BasicInfoPanel basicInfo = new BasicInfoPanel("basicInfo", panel, jobSeeker);
+				/*
+				Component basicInfo = new AjaxLazyLoadPanel("basicInfo"){
+					public Component getLazyLoadComponent(String id) {
+						return new BasicInfoPanel("basicInfo", panel, jobSeeker);
+					}
+					
+				};
+				
+				panel.addOrReplace(basicInfo);
+				basicInfo.setOutputMarkupId(true);
+				target.addComponent(basicInfo);*/
 				
 			}
 			protected void onError(AjaxRequestTarget target, Form form){
@@ -93,5 +111,5 @@ public class BasicProfileFormPanel extends Panel{
         form.add(submit);
 		
 	}
-	
+	protected abstract void onAjaxSubmit(AjaxRequestTarget target);
 }

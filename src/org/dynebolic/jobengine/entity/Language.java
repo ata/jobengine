@@ -24,9 +24,6 @@ public class Language implements IEntity{
 	
 	@Field
 	private String name;
-	
-	@Field
-	private String level;
 
 	public Long getId() {
 		return id;
@@ -44,18 +41,5 @@ public class Language implements IEntity{
 		this.name = name;
 	}
 
-	/**
-	 * @param level the level to set
-	 */
-	public void setLevel(String level) {
-		this.level = level;
-	}
-
-	/**
-	 * @return the level
-	 */
-	public String getLevel() {
-		return level;
-	}
 	
 }

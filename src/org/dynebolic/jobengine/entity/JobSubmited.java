@@ -3,6 +3,7 @@ package org.dynebolic.jobengine.entity;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,9 +25,14 @@ public class JobSubmited implements IEntity {
 	private JobSeeker jobSeeker;
 	
 	@ManyToOne
-	private Employer employer;
+	private Job job;
 	
 	private Boolean approved = false;
+	
+	private Boolean ignore = false;
+	
+	@Column(length=1000)
+	private String message;
 
 	public Long getId() {
 		return id;
@@ -52,14 +58,6 @@ public class JobSubmited implements IEntity {
 		this.jobSeeker = jobSeeker;
 	}
 
-	public Employer getEmployer() {
-		return employer;
-	}
-
-	public void setEmployer(Employer employer) {
-		this.employer = employer;
-	}
-
 	public Boolean getApproved() {
 		return approved;
 	}
@@ -78,6 +76,30 @@ public class JobSubmited implements IEntity {
 	public void setName(String name) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void setJob(Job job) {
+		this.job = job;
+	}
+
+	public Job getJob() {
+		return job;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setIgnore(Boolean ignore) {
+		this.ignore = ignore;
+	}
+
+	public Boolean getIgnore() {
+		return ignore;
 	}
 	
 	

@@ -8,7 +8,7 @@ import org.dynebolic.jobengine.page.BasePage;
 import org.dynebolic.jobengine.page.employer.directory.ApplicantDirectoryPanel;
 import org.dynebolic.jobengine.page.employer.search.ApplicantSearchPanel;
 
-public class EmployerPage extends BasePage implements IAjaxIndicatorAware{
+public class EmployerPage extends BasePage{
 	
 	protected Panel content;
 	

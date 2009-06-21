@@ -1,8 +1,10 @@
 package org.dynebolic.jobengine.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.search.annotations.DocumentId;
@@ -12,7 +14,7 @@ import org.hibernate.search.annotations.Indexed;
 @SuppressWarnings("serial")
 @Indexed
 @Entity
-@Table(name="job_seeker_certificate")
+@Table(name="job_seeker_certificates")
 public class JobSeekerCertificate implements IEntity{
 	
 	@DocumentId
@@ -23,8 +25,12 @@ public class JobSeekerCertificate implements IEntity{
 	@Field
 	private String name;
 	
-	private String year;
-
+	@Column(length=4)
+	private Integer year;
+	
+	@ManyToOne
+	private JobSeeker jobSeeker;
+	
 	public Long getId() {
 		return id;
 	}
@@ -41,12 +47,26 @@ public class JobSeekerCertificate implements IEntity{
 		this.name = name;
 	}
 
-	public String getYear() {
-		return year;
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
 	}
 
-	public void setYear(String year) {
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
+	}
+
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(Integer year) {
 		this.year = year;
+	}
+
+	/**
+	 * @return the year
+	 */
+	public Integer getYear() {
+		return year;
 	}
 	
 	

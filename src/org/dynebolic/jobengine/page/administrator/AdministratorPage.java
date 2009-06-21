@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.dynebolic.jobengine.entity.Country;
 import org.dynebolic.jobengine.entity.EducationLevel;
 import org.dynebolic.jobengine.entity.JobCategory;
+import org.dynebolic.jobengine.entity.Language;
 import org.dynebolic.jobengine.entity.Location;
 import org.dynebolic.jobengine.page.BasePage;
 import org.dynebolic.jobengine.page.administrator.generic.GenericMasterPage;
@@ -38,6 +39,13 @@ public class AdministratorPage extends BasePage{
 			@Override
 			public void onClick() {
 				setResponsePage(new GenericMasterPage<Country>(Country.class));
+			}
+			
+		});
+		add(new Link("languageLink"){
+			@Override
+			public void onClick() {
+				setResponsePage(new GenericMasterPage<Language>(Language.class));
 			}
 			
 		});

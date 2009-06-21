@@ -1,0 +1,44 @@
+<html>
+<wicket:panel>
+	<fieldset id="educationFieldset" style="border-top:1px solid #E46322">
+		<legend style="font-size:1em">Add Education</legend>
+		<span wicket:id="feedback"/>
+		<form wicket:id="educationForm">
+			<table>
+				<tr>
+					<td>Level Education</td>
+					<td>
+						<select wicket:id="level">
+							<option>Level</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Faculty</td>
+					<td><input wicket:id="faculty" type="text"></td>
+				</tr>
+				<tr>
+					<td>Institute</td>
+					<td><input wicket:id="institute" type="text"/></td>
+				</tr>
+				<tr>
+					<td>Start</td>
+					<td><input wicket:id="start" type="text" size="4"/></td>
+				</tr>
+				<tr>
+					<td>done</td>
+					<td><input wicket:id="done" type="text" size="4"/></td>
+				</tr>
+				<tr>
+					<td>IPK</td>
+					<td><input wicket:id="ipk" type="text" size="2"/></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input wicket:id="submit" type="submit" value="add"/></td>
+				</tr>
+			</table>
+		</form>
+	</fieldset>
+</wicket:panel>
+</html>

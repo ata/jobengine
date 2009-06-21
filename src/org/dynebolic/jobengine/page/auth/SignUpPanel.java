@@ -121,7 +121,7 @@ public class SignUpPanel extends Panel {
 
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form form) {
-				user.setComplete(false);
+				user.setComplete(true);
 				userService.save(user);
 				target.addComponent(feedback);
 				target.appendJavascript("Modalbox.show($('successRegister'))");

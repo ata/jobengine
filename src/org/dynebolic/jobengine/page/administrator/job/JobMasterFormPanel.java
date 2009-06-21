@@ -35,7 +35,7 @@ import org.dynebolic.jobengine.entity.JobCategory;
 import org.dynebolic.jobengine.entity.Location;
 import org.dynebolic.jobengine.entity.Role;
 import org.dynebolic.jobengine.service.CompanyService;
-import org.dynebolic.jobengine.service.EducationService;
+import org.dynebolic.jobengine.service.EducationLevelService;
 import org.dynebolic.jobengine.service.GenericService;
 import org.dynebolic.jobengine.service.IService;
 import org.dynebolic.jobengine.service.JobCategoryService;
@@ -46,7 +46,7 @@ public abstract class JobMasterFormPanel extends Panel{
 	
 	private JobService service =  new JobService();
 	private JobCategoryService categoryService = new JobCategoryService();
-	private EducationService educationService = new EducationService();
+	private EducationLevelService educationLevelService = new EducationLevelService();
 	private CompanyService companyService = new CompanyService();
 	private LocationService locationService = new LocationService();
 	private Job job;
@@ -95,7 +95,7 @@ public abstract class JobMasterFormPanel extends Panel{
         fc.add(new NumberValidator.RangeValidator(1,50));
         form.add(fc);
         
-        List<EducationLevel> educationLevels = educationService.find();
+        List<EducationLevel> educationLevels = educationLevelService.find();
         fc = new DropDownChoice("education",educationLevels,choiceRenderer);
         form.add(fc);
         

@@ -49,6 +49,9 @@ public class GroupPage extends AdministratorPage{
 		modal = new ModalWindow("modal");
 		modal.setInitialWidth(270);
 		modal.setInitialHeight(100);
+		//modal.setRenderBodyOnly(true);
+		modal.setResizable(false);
+		modal.setCssClassName("w_silver");
 		add(modal);
 		
 		GroupFormPanel panel = new GroupFormPanel(modal.getContentId()){

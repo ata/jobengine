@@ -2,135 +2,46 @@
 <wicket:panel>
 	<fieldset>
 		<legend>Basic Information</legend>
-		<span wicket:id="basicInfo" />
+		<span wicket:id="basicInfoPanel" />
 	</fieldset>
 	
 	<fieldset>
-		<legend>Carier Information</legend>
+		<legend>Experience Information</legend>
 		<table>
 			<tr> 
 				<th>Education</th>
 				<td>
-					<ul>
-						<li>S1, Ilmu Komputer, Universitas Pendidikan Indonesia, 2006-2010 IPK 3.0</li>
-						<li>S2, Computer Scince, MIT, 2011 - 2012, IPK 3.0</li>
-					</ul>
-					<form class="inline">
-						<table>
-							<tr>
-								<td>Level Education</td>
-								<td>
-									<select>
-										<option>Level</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>Faculty</td>
-								<td><input type="text"></td>
-							</tr>
-							<tr>
-								<td>Institute</td>
-								<td><input type="text"/></td>
-							</tr>
-							<tr>
-								<td>from</td>
-								<td><input type="text" size="4"/></td>
-							</tr>
-							<tr>
-								<td>to</td>
-								<td><input type="text" size="4"/></td>
-							</tr>
-							<tr>
-								<td>IPK</td>
-								<td><input type="text" size="2"/></td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td><input type="submit" value="add"/></td>
-							</tr>
-						</table>
-					</form>
+					<span wicket:id="educationPanel"/>
 				</td>
 			</tr>
 			<tr> 
 				<th>Certificate</th>
 				<td>
-					<ul>
-						<li>INternational Ruby On Rails Workshop - 2006 </li>
-						<li>INternational Java Wordkshop - 2007 </li>
-						<a>Add Certicate</a>
-					</ul>
-					<form class="inline">
-						<table>
-							<tr>
-								<td>Name</td>
-								<td><input type="text"></td>
-							</tr>
-							<tr>
-								<td>year</td>
-								<td><input type="text" size="4"/></td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td><input type="submit" value="add"/></td>
-							</tr>
-						</table>
-					</form>
+					<span wicket:id="certificatePanel"/>
 				</td>
 			</tr>
 			<tr> 
 				<th>Carier</th>
 				<td>
-					<ul>
-						<li> PT Inti : 2000 - 2004 </li>
-						<li> PT Telkom : 2004 - 2008 </li>
-					</ul>
-					<form class="inline">
-						<table>
-							<tr>
-								<td>Institute</td>
-								<td><input type="text"></td>
-							</tr>
-							<tr>
-								<td>from</td>
-								<td><input type="text" size="4"/></td>
-							</tr>
-							<tr>
-								<td>to</td>
-								<td><input type="text" size="4"/></td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td><input type="submit" value="add"/></td>
-							</tr>
-						</table>
-					</form>
+					<span wicket:id="carierPanel"/>
 				</td>
 			</tr>
 			<tr> 
 				<th>Skill</th>
 				<td>
-					<ul>
-						<li> Java -  3 year </li>
-						<li> PHP  -  4 Year</li>
-					</ul>
-					<form class="inline">
-						<table>
-							<tr>
-								<td>Skill</td>
-								<td><input type="text"></td>
-							</tr>
-							<tr>
-								<td>experience</td>
-								<td><input type="text" size="4"/> year </td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td><input type="submit" value="add"/></td>
-							</tr>
-						</table>
-					</form>
+					<span wicket:id="skillPanel"/>
+				</td>
+			</tr>
+			<tr> 
+				<th>Language Skill</th>
+				<td>
+					<span wicket:id="languagePanel"/>
+				</td>
+			</tr>
+			<tr> 
+				<th>Prefer Location</th>
+				<td>
+					<span wicket:id="preferLocationPanel"/>
 				</td>
 			</tr>
 		</table>

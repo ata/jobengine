@@ -25,7 +25,7 @@ document.observe('dom:loaded',function(){
 		cleanQuickSignIn();
 	});
 	
-	$('ajaxIndicator').setOpacity(0.8);
+	$('ajaxIndicator').setOpacity(0.5);
 	$('ajaxIndicator').hide();
 	
 });

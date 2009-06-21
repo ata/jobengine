@@ -7,7 +7,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.dynebolic.jobengine.page.BasePage;
 import org.dynebolic.jobengine.page.jobseeker.search.JobSearchPanel;
 
-public class SignInPage extends BasePage implements IAjaxIndicatorAware{
+public class SignInPage extends BasePage{
 	public SignInPage()
 	{
 		this(null);

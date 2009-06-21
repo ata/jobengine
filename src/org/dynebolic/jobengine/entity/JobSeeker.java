@@ -57,18 +57,13 @@ public class JobSeeker implements IEntity{
 	private String phone;
 	
 	private String personalWeb;
-
-	@ContainedIn
-	@OneToMany(targetEntity=JobSeekerSkill.class)
-	private List<JobSeekerSkill> skills;
+	
+	private String photo;
+	
+	private String thumbnail;
 	
 	@OneToOne(targetEntity=User.class)
-	private User user;
-	
-	private MediaAsset photo;
-	
-	private MediaAsset thumbnail;
-	
+	private User user;	
 	
 	@IndexedEmbedded
 	@ManyToOne(targetEntity=Location.class)
@@ -82,22 +77,29 @@ public class JobSeeker implements IEntity{
 	@OneToOne(targetEntity=JobSeekerEducation.class)
 	private JobSeekerEducation lastEducation;
 	
+	@ContainedIn
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobSeekerSkill> skills;
 	
 	@ContainedIn
-	@OneToMany(targetEntity=JobSeekerEducation.class)
+	@OneToMany(mappedBy="jobSeeker")
 	private List<JobSeekerEducation> educations;
 	
 	@ContainedIn
-	@OneToMany(targetEntity=JobSeekerExperience.class)
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobSeekerCarier> cariers;
+	
+	@ContainedIn
+	@OneToMany(mappedBy="jobSeeker")
 	private List<JobSeekerExperience> experiences;
 	
 	@ContainedIn
-	@OneToMany(targetEntity=JobSeekerCertificate.class)
+	@OneToMany(mappedBy="jobSeeker")
 	private List<JobSeekerCertificate> certificates;
 	
 	@ContainedIn
-	@OneToMany(targetEntity=Language.class)
-	private List<Language> languages;
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobSeekerLanguage> language;
 	
 	@ContainedIn
 	@ManyToMany(targetEntity=Location.class)
@@ -286,20 +288,6 @@ public class JobSeeker implements IEntity{
 	}
 
 	/**
-	 * @param languages the languages to set
-	 */
-	public void setLanguages(List<Language> languages) {
-		this.languages = languages;
-	}
-
-	/**
-	 * @return the languages
-	 */
-	public List<Language> getLanguages() {
-		return languages;
-	}
-
-	/**
 	 * @param gender the gender to set
 	 */
 	public void setGender(String gender) {
@@ -327,35 +315,43 @@ public class JobSeeker implements IEntity{
 		return country;
 	}
 
-	/**
-	 * @param thumbnail the thumbnail to set
-	 */
-	public void setThumbnail(MediaAsset thumbnail) {
-		this.thumbnail = thumbnail;
-	}
-
-	/**
-	 * @return the thumbnail
-	 */
-	public MediaAsset getThumbnail() {
-		return thumbnail;
-	}
-
-	/**
-	 * @param photo the photo to set
-	 */
-	public void setPhoto(MediaAsset photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 
-	/**
-	 * @return the photo
-	 */
-	public MediaAsset getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
-	
-	
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setLanguage(List<JobSeekerLanguage> language) {
+		this.language = language;
+	}
+
+	public List<JobSeekerLanguage> getLanguage() {
+		return language;
+	}
+
+	/**
+	 * @param cariers the cariers to set
+	 */
+	public void setCariers(List<JobSeekerCarier> cariers) {
+		this.cariers = cariers;
+	}
+
+	/**
+	 * @return the cariers
+	 */
+	public List<JobSeekerCarier> getCariers() {
+		return cariers;
+	}
 	
 
 

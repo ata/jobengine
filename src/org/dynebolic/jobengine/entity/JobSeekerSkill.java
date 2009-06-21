@@ -3,6 +3,7 @@ package org.dynebolic.jobengine.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.search.annotations.DocumentId;
@@ -24,8 +25,13 @@ public class JobSeekerSkill implements IEntity{
 	private String name;
 	
 	@Field
-	private Integer longTime;
+	private String detail;
 	
+	@Field
+	private Integer experience;
+	
+	@ManyToOne
+	private JobSeeker jobSeeker;
 	
 	public Long getId() {
 		return id;
@@ -43,12 +49,29 @@ public class JobSeekerSkill implements IEntity{
 		this.name = name;
 	}
 
-	public Integer getLongTime() {
-		return longTime;
+
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
 	}
 
-	public void setLongTime(Integer longTime) {
-		this.longTime = longTime;
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
+	}
+
+	public void setExperience(Integer experience) {
+		this.experience = experience;
+	}
+
+	public Integer getExperience() {
+		return experience;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public String getDetail() {
+		return detail;
 	}
 	
 	

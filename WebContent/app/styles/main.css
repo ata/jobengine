@@ -206,18 +206,34 @@ div.content fieldset {
 div.content legend {
 	text-align:left;
 	font-size:1.5em;
-	padding: .4em .8em;
+	padding: 0 .8em;
 	color: #BE1D08; 
 }
 
 div.content fieldset table {
 	text-align:left;
+	width: 100%;
 }
 div.content td{
 	line-height: 25px;
 }
 div.content th{
 	width: 175px;
+	vertical-align: top;
+}
+ul{
+	margin: 0;
+}
+div.content li.feedbackPanelERROR{
+	padding: 5px;
+	color:#f00;
+	font-weight:bold;
+	text-align: left;
+	background-color: #FFEC00;
+	border: 1px solid #BE1D08;
+	list-style: none;
+	margin: 0;
+	margin-bottom: 2px;
 }
 form.inline{
 	display: none;

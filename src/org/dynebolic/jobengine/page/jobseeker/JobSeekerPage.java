@@ -15,7 +15,7 @@ import org.dynebolic.jobengine.page.jobseeker.search.JobSearchPanel;
 import org.dynebolic.jobengine.service.JobSeekerService;
 import org.dynebolic.jobengine.service.UserService;
 
-public class JobSeekerPage extends BasePage implements IAjaxIndicatorAware{
+public class JobSeekerPage extends BasePage{
 	protected Panel content;
 	private JobSeekerService jobSeekerService = new JobSeekerService();
 	private UserService userService = new UserService();
@@ -57,8 +57,8 @@ public class JobSeekerPage extends BasePage implements IAjaxIndicatorAware{
 				getJESession().setUser(userService.find(getJESession().getUser().getId()));
 			}
 			if(!getJESession().getUser().getComplete()) {
-				addOrReplace(new ProfilePanel("content", this));
-				menu.setVisible(false);
+				addOrReplace(new ProfilePanel("content"));
+				//menu.setVisible(false);
 			}
 		}
 		

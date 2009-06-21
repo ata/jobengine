@@ -1,5 +1,6 @@
 package org.dynebolic.jobengine.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,14 +24,23 @@ public class JobSeekerEducation implements IEntity{
 	private Long id;
 	
 	@IndexedEmbedded
-	@ManyToOne(targetEntity = EducationLevel.class)
-	private EducationLevel educationLevel;
+	@ManyToOne
+	private EducationLevel level;
 	
+	@ManyToOne
+	private JobSeeker jobSeeker;
+	
+	@Field
 	private String faculty;
 	
-	private String start;
+	@Field
+	private String institute;
 	
-	private String done;
+	@Column(length=4)
+	private Integer start;
+	
+	@Column(length=4)
+	private Integer done;
 	
 	@Field
 	private Double ipk;
@@ -41,30 +51,6 @@ public class JobSeekerEducation implements IEntity{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public EducationLevel getEducationLevel() {
-		return educationLevel;
-	}
-
-	public void setEducationLevel(EducationLevel educationLevel) {
-		this.educationLevel = educationLevel;
-	}
-
-	public String getStart() {
-		return start;
-	}
-
-	public void setStart(String start) {
-		this.start = start;
-	}
-
-	public String getDone() {
-		return done;
-	}
-
-	public void setDone(String done) {
-		this.done = done;
 	}
 
 	public Double getIpk() {
@@ -99,6 +85,46 @@ public class JobSeekerEducation implements IEntity{
 	 */
 	public String getFaculty() {
 		return faculty;
+	}
+
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
+	}
+
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
+	}
+
+	public void setInstitute(String institute) {
+		this.institute = institute;
+	}
+
+	public String getInstitute() {
+		return institute;
+	}
+
+	public void setLevel(EducationLevel level) {
+		this.level = level;
+	}
+
+	public EducationLevel getLevel() {
+		return level;
+	}
+
+	public void setStart(Integer start) {
+		this.start = start;
+	}
+
+	public Integer getStart() {
+		return start;
+	}
+
+	public void setDone(Integer done) {
+		this.done = done;
+	}
+
+	public Integer getDone() {
+		return done;
 	}
 	
 	

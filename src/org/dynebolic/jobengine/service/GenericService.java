@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import org.dynebolic.jobengine.entity.IEntity;
 import org.dynebolic.jobengine.hibernate.support.EMUtil;
 
+@SuppressWarnings("serial")
 public class GenericService<E extends IEntity> implements IService<E> {
 	protected Class<?> _class;
 	protected EntityManager em;
@@ -22,6 +23,7 @@ public class GenericService<E extends IEntity> implements IService<E> {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public GenericService() {
 		super();
 		//this._class = Class.forName(getClass().getGenericSuperclass().toString().split("[<>]")[0]);
@@ -65,10 +67,10 @@ public class GenericService<E extends IEntity> implements IService<E> {
 	@Override
 	public List<E> find() {
 		em = EMUtil.createEntityManager();
-		query = em.createQuery("from " + _class.getCanonicalName());
-		List<E> groups = query.getResultList();
+		query = em.createQuery("from " + _class.getCanonicalName() + " e order by e.id");
+		List<E> list = query.getResultList();
 		em.close();
-		return groups;
+		return list;
 	}
 
 	@Override

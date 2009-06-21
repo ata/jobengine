@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.search.annotations.DocumentId;
@@ -33,6 +34,9 @@ public class JobSeekerExperience implements IEntity{
 	
 	@Column(length=1000)
 	private String description;
+	
+	@ManyToOne
+	private JobSeeker jobSeeker;
 
 	public Long getId() {
 		return id;
@@ -109,6 +113,14 @@ public class JobSeekerExperience implements IEntity{
 	 */
 	public Integer getYearDone() {
 		return yearDone;
+	}
+
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
+	}
+
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
 	}
 	
 	
