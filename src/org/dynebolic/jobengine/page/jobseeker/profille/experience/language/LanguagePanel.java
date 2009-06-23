@@ -19,16 +19,16 @@ public class LanguagePanel extends BasePanel{
 		listContainer = new WebMarkupContainer("listContainer");
 		listContainer.setOutputMarkupId(true);
 		add(listContainer);
-		list = getListPanel();
-		/*
-		list = new LanguageListPanel("listPanel"){
+		//list = getListPanel();
+		
+		list = new LanguageListPanel("listPanel",true){
 			protected void onDeleteItem(AjaxRequestTarget target) {
 				list = getListPanel();
 				listContainer.addOrReplace(list);
 				target.addComponent(listContainer);
 			}
 			
-		};*/
+		};
 		listContainer.add(list);
 		
 		formContainer = new WebMarkupContainer("formContainer");
@@ -74,7 +74,7 @@ public class LanguagePanel extends BasePanel{
 	public Component getListPanel() {
 		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("listPanel"){
 			public Component getLazyLoadComponent(String id) {
-				return new LanguageListPanel(id){
+				return new LanguageListPanel(id,true){
 					protected void onDeleteItem(AjaxRequestTarget target) {
 						list = getListPanel();
 						listContainer.addOrReplace(list);

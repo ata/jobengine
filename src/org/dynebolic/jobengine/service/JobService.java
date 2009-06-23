@@ -28,7 +28,6 @@ public class JobService extends GenericService<Job> {
 		
 		Employer employer = ((JobEngineAuthenticatedWebSession) 
 				JobEngineAuthenticatedWebSession.get()).getUser().getEmployer();
-		System.out.println("Employer from service:" +employer.getName());
 		
 		// TODO Auto-generated method stub
 		em = EMUtil.createEntityManager();
@@ -41,9 +40,9 @@ public class JobService extends GenericService<Job> {
 		query.setParameter("employer", employer);
 		query.setFirstResult(first);
 		query.setMaxResults(count);
-		List<Job> groups = query.getResultList();
+		List<Job> list = query.getResultList();
 		em.close();
-		return groups;
+		return list;
 	}
 	
 	@SuppressWarnings("unchecked")

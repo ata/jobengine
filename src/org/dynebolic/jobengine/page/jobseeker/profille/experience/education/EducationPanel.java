@@ -20,16 +20,16 @@ public class EducationPanel extends BasePanel{
 		listContainer.setOutputMarkupId(true);
 		add(listContainer);
 		
-		list = getEducationListPanel();
-		/*
-		list = new EducationListPanel("educationListPanel"){
+		//list = getEducationListPanel();
+		
+		list = new EducationListPanel("educationListPanel",true){
 			protected void onDeleteItem(AjaxRequestTarget target) {
 				list = getEducationListPanel();
 				listContainer.addOrReplace(list);
 				target.addComponent(listContainer);
 			}
 		};
-		*/
+		
 		listContainer.add(list);
 		
 		formContainer = new WebMarkupContainer("formContainer");
@@ -75,7 +75,7 @@ public class EducationPanel extends BasePanel{
 	public Component getEducationListPanel() {
 		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("educationListPanel"){
 			public Component getLazyLoadComponent(String id) {
-				return new EducationListPanel(id){
+				return new EducationListPanel(id,true){
 
 					@Override
 					protected void onDeleteItem(AjaxRequestTarget target) {

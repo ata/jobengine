@@ -20,17 +20,19 @@ import org.apache.wicket.validation.IValidator;
 import org.apache.wicket.validation.ValidationError;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.apache.wicket.validation.validator.StringValidator;
+import org.dynebolic.jobengine.JobEngineApplication;
 import org.dynebolic.jobengine.entity.Employer;
 import org.dynebolic.jobengine.entity.JobSeeker;
 import org.dynebolic.jobengine.entity.Role;
 import org.dynebolic.jobengine.entity.User;
+import org.dynebolic.jobengine.page.BasePanel;
 import org.dynebolic.jobengine.service.EmployerService;
 import org.dynebolic.jobengine.service.JobSeekerService;
 import org.dynebolic.jobengine.service.RoleService;
 import org.dynebolic.jobengine.service.UserService;
 
 @SuppressWarnings("serial")
-public class SignUpPanel extends Panel {
+public class SignUpPanel extends BasePanel {
 	private User user;
 	private String validatePassword;
 	private RoleService roleService = new RoleService();
@@ -120,6 +122,7 @@ public class SignUpPanel extends Panel {
 					JobSeeker jobSeeker = new JobSeeker();
 					jobSeeker.setName(user.getName());
 					jobSeeker.setUser(user);
+					jobSeeker.setPhoto(getUploadPath() + "default_photo.gif");
 					jobSeekerService.save(jobSeeker);
 				} else {
 					Employer employer = new Employer();
@@ -128,15 +131,15 @@ public class SignUpPanel extends Panel {
 					employerService.save(employer);
 				}
 				target.addComponent(feedback);
-				target.appendJavascript("Modalbox.show($('successRegister'))");
+				//target.appendJavascript("Modalbox.show($('successRegister'))");
 				
 			}
 			
 			protected void onError(AjaxRequestTarget target, Form form)
             {
                 target.addComponent(feedback);
-                target.appendJavascript("Modalbox.resizeToContent();" +
-                		"new Effect.Shake('MB_window')");
+                //target.appendJavascript("Modalbox.resizeToContent();" +
+                	//	"new Effect.Shake('MB_window')");
             }
 			
 		};

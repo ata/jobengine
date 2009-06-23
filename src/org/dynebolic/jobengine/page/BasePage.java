@@ -3,11 +3,13 @@ package org.dynebolic.jobengine.page;
 import org.apache.wicket.ajax.IAjaxIndicatorAware;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.panel.Panel;
+import org.dynebolic.jobengine.JobEngineApplication;
 import org.dynebolic.jobengine.JobEngineAuthenticatedWebSession;
 import org.dynebolic.jobengine.page.auth.QuickSignInPanel;
 
 public class BasePage extends WebPage implements IAjaxIndicatorAware{
-	protected String ajaxIndicatorMarkupId = "ajaxIndicator";
+	protected String ajaxIndicatorMarkupId = "ajaxBigIndicator";
 	protected MenuPanel menuPanel;
 	
 	public BasePage(){
@@ -22,11 +24,13 @@ public class BasePage extends WebPage implements IAjaxIndicatorAware{
 		add(new WebMarkupContainer("textcss"));
 		add(new WebMarkupContainer("960css"));
 		add(new WebMarkupContainer("modalboxcss"));
-		//add(new WebMarkupContainer("protoloadcss"));
+		
 		add(new WebMarkupContainer("glossymenucss"));
 		add(new WebMarkupContainer("maincss"));
 		//panel
-		add(new QuickSignInPanel("quickSignInPanel"));
+		Panel quick = new QuickSignInPanel("quickSignInPanel");
+		quick.setVisible(false);
+		add(quick);
 		menuPanel = new MenuPanel("menuPanel"); 
 		add(menuPanel);
 		

@@ -16,9 +16,18 @@ import org.dynebolic.jobengine.service.JobSeekerCarierService;
 public abstract class CarierListPanel extends BasePanel{
 	private JobSeekerCarierService carierService = new JobSeekerCarierService();
 	private List<JobSeekerCarier> cariers;
+	
 	public CarierListPanel(String id) {
+		this(id,false);
+	}
+	
+	public CarierListPanel(String id, Boolean reload) {
 		super(id);
-		cariers = carierService.find(getJESession().getUser().getJobSeeker());
+		if(reload) {
+			cariers = carierService.find(getJESession().getUser().getJobSeeker());
+		} else {
+			cariers = getJESession().getUser().getJobSeeker().getCariers();
+		}
 		final ListView eachView = new ListView("eachView", cariers){
 			protected void populateItem(final ListItem item) {
 				final JobSeekerCarier carier = (JobSeekerCarier) item.getModelObject();

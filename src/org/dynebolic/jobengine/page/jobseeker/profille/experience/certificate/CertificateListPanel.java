@@ -17,9 +17,21 @@ public abstract class CertificateListPanel extends BasePanel{
 	private JobSeekerCertificateService certificateService = 
 		new JobSeekerCertificateService();
 	private List<JobSeekerCertificate> certificates;
+	
 	public CertificateListPanel(String id) {
+		this(id,false);
+	}
+	
+	public CertificateListPanel(String id, Boolean reload) {
 		super(id);
-		certificates = certificateService.find(getJESession().getUser().getJobSeeker());
+		if(reload){
+			certificates = certificateService.find(getJESession()
+				.getUser().getJobSeeker());
+		} else {
+			certificates = getJESession().getUser()
+				.getJobSeeker().getCertificates();
+		}
+		
 		final ListView eachView = new ListView("eachView", certificates){
 			protected void populateItem(final ListItem item) {
 				final JobSeekerCertificate certificate = 

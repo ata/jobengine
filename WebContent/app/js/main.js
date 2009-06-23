@@ -2,7 +2,9 @@
 
 document.observe('dom:loaded',function(){
 	//nicEditors.allTextAreas()
+	
 	var advanced_search_show = false;
+	/*
 	function cleanQuickSignIn(){
 		if($F('qSignUser') == '' && $F('qSignPass') == ''){
 			$('qSignUser').setValue('username or email').setStyle('color: #999');
@@ -23,9 +25,11 @@ document.observe('dom:loaded',function(){
 	});
 	$('qSignPass').observe('blur',function(){
 		cleanQuickSignIn();
-	});
+	});*/
 	
 	$('ajaxIndicator').setOpacity(0.5);
 	$('ajaxIndicator').hide();
+	$('ajaxBigIndicator').setOpacity(0.5);
+	$('ajaxBigIndicator').hide();
 	
 });

@@ -36,5 +36,8 @@ public class JobEngineApplication extends AuthenticatedWebApplication{
 		return JobEngineAuthenticatedWebSession.class;
 	}
 	
+	public String getUploadPath(){
+		return "/var/jobengine/files/";
+	}
 	
 }

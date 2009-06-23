@@ -6,14 +6,12 @@
 		<div class="bigWaiting" id="ajaxIndicator"></div>
 	</div>
 	<div class="grid_3 sidebar">
+		<div wicket:id="photo" class="photo"></div>
 		<span wicket:id="jobSeekerMenuPanel"/>
-		<div wicket:id="signUpContainer" class="box">
-			<a href="about:none" onclick="Modalbox.show($('signUp'),{width:380, title: 'Sign Up'})"><h2>Sign Up</h2></a>
-			<span wicket:id="signUpPanel" id="signUp" style="display:none"/>
-			<div style="display:none" id="successRegister">
-				<h2>Success Registed</h2>
-				Please login in <a wicket:id="loginLink">here</a>
-			</div>
+		<div class="loginbox" wicket:id="guestContainer">
+			<h4>Login</h4>
+			<span wicket:id="signInPanel"/>
+			<h5><a wicket:id="signUpLink">Sign Up</a></h5>
 		</div>
 	</div>
 </wicket:extend>

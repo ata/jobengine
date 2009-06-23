@@ -1,32 +1,15 @@
 <html xmlns:wicket>
   <wicket:panel>
     <span wicket:id="feedback"/>
-		<form wicket:id="signInForm">
-			<table>
-				<tr>
-					<td align="right">Username:</td>
-					<td>
-						<input wicket:id="username" type="text" value="foo@goo.moo"/>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">Password:</td>
-					<td>
-						<input wicket:id="password" type="password" value="password"/>
-					</td>
-				</tr>
-				<tr wicket:id="rememberMeRow">
-					<td></td>
-					<td> <input wicket:id="rememberMe" type="checkbox" /> Remember Me </td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<input type="submit" name="submit" value="Sign In"/>
-						<input type="reset" value="Reset"/>
-					</td>
-				</tr>
-			</table>
-		</form>
+	<form wicket:id="signInForm">
+		<label>Username:</label>
+		<input wicket:id="username" type="text" style="width: 190px"/>
+		<label>Password:</label>
+		<input wicket:id="password" type="password" style="width: 190px"/>
+		<div wicket:id="rememberMeRow">
+			<input wicket:id="rememberMe" type="checkbox" /> Remember Me
+		</div>
+		<input type="submit" name="submit" value="Sign In"/>
+	</form>
   </wicket:panel>
 </html>

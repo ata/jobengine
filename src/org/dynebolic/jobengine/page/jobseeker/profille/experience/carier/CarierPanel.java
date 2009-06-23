@@ -21,16 +21,16 @@ public class CarierPanel extends BasePanel{
 		listContainer = new WebMarkupContainer("listContainer");
 		listContainer.setOutputMarkupId(true);
 		add(listContainer);
-		list = getListPanel();
-		/*
-		list = new CarierListPanel("listPanel"){
+		//list = getListPanel();
+		
+		list = new CarierListPanel("listPanel",true){
 			protected void onDeleteItem(AjaxRequestTarget target) {
 				list = getListPanel();
 				listContainer.addOrReplace(list);
 				target.addComponent(listContainer);
 			}
 			
-		};*/
+		};
 		listContainer.add(list);
 		
 		formContainer = new WebMarkupContainer("formContainer");
@@ -75,7 +75,7 @@ public class CarierPanel extends BasePanel{
 	public Component getListPanel() {
 		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("listPanel"){
 			public Component getLazyLoadComponent(String id) {
-				return new CarierListPanel(id){
+				return new CarierListPanel(id,true){
 					protected void onDeleteItem(AjaxRequestTarget target) {
 						list = getListPanel();
 						listContainer.addOrReplace(list);

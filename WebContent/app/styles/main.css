@@ -67,32 +67,45 @@ div.main{
 div.sidebar{
 	float:right;
 }
-div.box{
+div.loginbox{
 	margin-top:30px;
 	border:1px solid #E46322;
-	border-bottom: 3px solid #E46322;
-}
-div.box h4{
-	background: #E46322;
+	border-bottom: 2px solid #E46322;
 	text-align: center;
+	padding: 0 auto;
+}
+div.loginbox form{
+	width:200px;
+	margin: 0 auto;
+	text-align: left;
+}
+div.loginbox h4{
+	background: #E46322;
+	text-align: left;
 	font-size:small;
 	padding: 0;
 	margin: 0;
+	padding-left:1em;
 	color:#fff;
-	
+	margin-bottom: 20px;
 }
+
 ul.sidemenu {
 	margin-top:1em;
-	list-style:square;
 }
 ul.sidemenu li {
-	
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 ul.sidemenu li a {
-	color:#000;
+	display:block;
+	
+	color:#E46322;
 	text-decoration:none;
 	font-size:12px;
 	padding:4px 10px;
+	border-bottom: 1px solid #E46322;
 }
 ul.sidemenu li a:hover {
 	font-weight:bold;
@@ -109,6 +122,10 @@ div.footer{
 	height:50px;
 	border-top:1px solid #BE1D08;
 	text-align: right;
+}
+
+textarea{
+	width: 100%;
 }
 
 table.dataview a{
@@ -153,6 +170,22 @@ table.dataview td{
     z-index:1000;
     position:absolute;
  }
+ 
+ #ajaxBigIndicator{
+	background:url('bigWaiting.gif') #FFFFFF center center no-repeat;
+	/*
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-color:white;
+	*/
+    width:100%;
+	height:100%;
+    display:block;
+    top:0;
+    z-index:1000;
+    position:absolute;
+ }
+ 
  div.result{
  	margin-bottom: 1em;
  }
@@ -177,8 +210,8 @@ table.dataview td{
 	background:#fff;
 	border:1px solid #bbb;
 }
-#MB_window td label {
-	margin-right: 1em;
+#MB_window th {
+	padding-right: 1em;
 }
 #MB_window table{
 	margin: 0 auto;
@@ -237,4 +270,11 @@ div.content li.feedbackPanelERROR{
 }
 form.inline{
 	display: none;
+}
+.photo{
+	margin-top:20px;
+}
+.photo img{
+	padding: 4px;
+	border: 1px solid #E46322;
 }

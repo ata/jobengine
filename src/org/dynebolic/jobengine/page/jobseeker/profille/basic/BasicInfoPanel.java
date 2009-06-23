@@ -15,13 +15,25 @@ public class BasicInfoPanel extends BasePanel{
 		infoContainer = new WebMarkupContainer("infoContainer");
 		add(infoContainer);
 		infoContainer.setOutputMarkupId(true);
-		infoContainer.add(new BasicInfoViewPanel("basicInfo"){
-			protected void onClickEdit(AjaxRequestTarget target) {
-				basicInfo = getForm();
-				infoContainer.addOrReplace(basicInfo);
-				target.addComponent(infoContainer);
-			}
-		});
+		
+		if(getJESession().getUser().getComplete()) {
+			infoContainer.add(new BasicInfoViewPanel("basicInfo"){
+				protected void onClickEdit(AjaxRequestTarget target) {
+					basicInfo = getForm();
+					infoContainer.addOrReplace(basicInfo);
+					target.addComponent(infoContainer);
+				}
+			});
+		} else {
+			infoContainer.add(new BasicInfoFormPanel("basicInfo"){
+				protected void onAjaxSubmit(AjaxRequestTarget target) {
+					basicInfo = getView();
+					infoContainer.addOrReplace(basicInfo);
+					target.addComponent(infoContainer);
+				}
+			});
+		}
+		
 		
 		
 	}

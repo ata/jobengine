@@ -19,9 +19,9 @@ public class SkillPanel extends BasePanel{
 		listContainer = new WebMarkupContainer("listContainer");
 		listContainer.setOutputMarkupId(true);
 		add(listContainer);
-		list = getListPanel();
-		/*
-		list = new SkillListPanel("listPanel"){
+		//list = getListPanel();
+		
+		list = new SkillListPanel("listPanel",true){
 			protected void onDeleteItem(AjaxRequestTarget target) {
 				list = getListPanel();
 				listContainer.addOrReplace(list);
@@ -29,7 +29,7 @@ public class SkillPanel extends BasePanel{
 			}
 			
 		};
-		*/
+		
 		listContainer.add(list);
 		
 		formContainer = new WebMarkupContainer("formContainer");
@@ -75,7 +75,7 @@ public class SkillPanel extends BasePanel{
 	public Component getListPanel() {
 		AjaxLazyLoadPanel load = new AjaxLazyLoadPanel("listPanel"){
 			public Component getLazyLoadComponent(String id) {
-				return new SkillListPanel(id){
+				return new SkillListPanel(id,true){
 					protected void onDeleteItem(AjaxRequestTarget target) {
 						list = getListPanel();
 						listContainer.addOrReplace(list);

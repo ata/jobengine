@@ -53,7 +53,7 @@ public class JobSeeker implements IEntity{
     
     @Field
     @Column(length=1000)
-    private String description;
+    private String description = "";
     
     private String phone;
     
@@ -105,6 +105,12 @@ public class JobSeeker implements IEntity{
     @ContainedIn
     @ManyToMany(targetEntity=Location.class,cascade=CascadeType.MERGE)
     private List<Location> preferLocations;
+    
+    @ManyToMany(cascade=CascadeType.MERGE)
+    private List<Job> jobBookmarks;
+    
+    @OneToMany(mappedBy="jobSeeker",cascade=CascadeType.MERGE)
+    private List<JobSubmited> submiteds;
     
     public JobSeeker() {
     }
@@ -360,6 +366,34 @@ public class JobSeeker implements IEntity{
     public List<JobSeekerLanguage> getLanguages() {
         return languages;
     }
+
+	/**
+	 * @param jobBookmarks the jobBookmarks to set
+	 */
+	public void setJobBookmarks(List<Job> jobBookmarks) {
+		this.jobBookmarks = jobBookmarks;
+	}
+
+	/**
+	 * @return the jobBookmarks
+	 */
+	public List<Job> getJobBookmarks() {
+		return jobBookmarks;
+	}
+
+	/**
+	 * @param submiteds the submiteds to set
+	 */
+	public void setSubmiteds(List<JobSubmited> submiteds) {
+		this.submiteds = submiteds;
+	}
+
+	/**
+	 * @return the submiteds
+	 */
+	public List<JobSubmited> getSubmiteds() {
+		return submiteds;
+	}
 
 
 }

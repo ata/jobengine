@@ -16,9 +16,18 @@ import org.dynebolic.jobengine.service.JobSeekerLanguageService;
 public abstract class LanguageListPanel extends BasePanel{
 	private JobSeekerLanguageService languageService = new JobSeekerLanguageService();
 	private List<JobSeekerLanguage> languages;
-	public LanguageListPanel(String id) {
+	
+	public LanguageListPanel(String id){
+		this(id,false);
+	}
+	
+	public LanguageListPanel(String id, Boolean reload) {
 		super(id);
-		languages = languageService.find(getJESession().getUser().getJobSeeker());
+		if(reload) {
+			languages = languageService.find(getJESession().getUser().getJobSeeker());
+		} else {
+			languages = getJESession().getUser().getJobSeeker().getLanguages();
+		}
 		final ListView eachView = new ListView("eachView", languages){
 			protected void populateItem(final ListItem item) {
 				final JobSeekerLanguage language = (JobSeekerLanguage) item.getModelObject();

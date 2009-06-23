@@ -16,9 +16,21 @@ import org.dynebolic.jobengine.service.JobSeekerSkillService;
 public abstract class SkillListPanel extends BasePanel{
 	private JobSeekerSkillService  skillService = new JobSeekerSkillService();
 	private List<JobSeekerSkill> skills;
-	public SkillListPanel(String id) {
+	
+	public SkillListPanel(String id){
+		this(id,false);
+	}
+	
+	public SkillListPanel(String id, Boolean reload) {
 		super(id);
-		skills = skillService.find(getJESession().getUser().getJobSeeker());
+		
+		if(reload) {
+			skills = skillService.find(getJESession().getUser().getJobSeeker());
+		} else {
+			skills = getJESession().getUser().getJobSeeker().getSkills();
+		}
+		
+		
 		final ListView eachView = new ListView("eachView", skills){
 			protected void populateItem(final ListItem item) {
 				final JobSeekerSkill skill = (JobSeekerSkill) item.getModelObject();

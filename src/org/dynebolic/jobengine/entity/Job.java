@@ -2,6 +2,7 @@ package org.dynebolic.jobengine.entity;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,8 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.ContainedIn;
 import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
@@ -75,7 +78,7 @@ public class Job implements IEntity{
     
     @IndexedEmbedded
     @ManyToOne(cascade=CascadeType.MERGE)
-    private EducationLevel educationLevel;
+    private EducationLevel education;
     
     @IndexedEmbedded
     @ManyToOne(cascade=CascadeType.MERGE)
@@ -88,7 +91,10 @@ public class Job implements IEntity{
     @IndexedEmbedded
     @ManyToOne(cascade=CascadeType.MERGE)
     private Location location;
-
+    
+    @ContainedIn
+    @OneToMany(mappedBy="job",cascade=CascadeType.MERGE)
+    private List<JobSubmited> submiteds;
 
     public Long getId() {
         return id;
@@ -167,16 +173,6 @@ public class Job implements IEntity{
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-
-    public EducationLevel getEducationLevel() {
-        return educationLevel;
-    }
-
-
-    public void setEducationLevel(EducationLevel educationLevel) {
-        this.educationLevel = educationLevel;
     }
 
 
@@ -279,7 +275,7 @@ public class Job implements IEntity{
         this.experience = null;
         this.additionalSkills = null;
         this.description = null;
-        this.educationLevel = null;
+        this.education = null;
         this.category = null;
         this.employer = null;
         this.location = null;
@@ -302,6 +298,30 @@ public class Job implements IEntity{
     public Date getPostedDate() {
         return postedDate;
     }
+	/**
+	 * @param education the education to set
+	 */
+	public void setEducation(EducationLevel education) {
+		this.education = education;
+	}
+	/**
+	 * @return the education
+	 */
+	public EducationLevel getEducation() {
+		return education;
+	}
+	/**
+	 * @param submiteds the submiteds to set
+	 */
+	public void setSubmiteds(List<JobSubmited> submiteds) {
+		this.submiteds = submiteds;
+	}
+	/**
+	 * @return the submiteds
+	 */
+	public List<JobSubmited> getSubmiteds() {
+		return submiteds;
+	}
     
     
 }

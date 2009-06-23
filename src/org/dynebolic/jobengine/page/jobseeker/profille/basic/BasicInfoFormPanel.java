@@ -76,11 +76,16 @@ public abstract class BasicInfoFormPanel extends BasePanel{
         fc.setRequired(true);
         form.add(fc);
         
+        fc = new TextArea("description");
+        fc.setRequired(true);
+        form.add(fc);
+        
         AjaxButton submit = new AjaxButton("submit"){
 
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form form) {
 				jobSeeker.getUser().setName(jobSeeker.getName());
+				jobSeeker.getUser().setComplete(true);
 				jobSeekerService.save(jobSeeker);
 				getJESession().setUser(jobSeeker.getUser());
 				onAjaxSubmit(target);

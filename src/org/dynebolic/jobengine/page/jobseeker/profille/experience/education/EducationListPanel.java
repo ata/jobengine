@@ -17,9 +17,18 @@ public abstract class EducationListPanel extends BasePanel{
 	private JobSeekerEducationService jobSeekerEducationService =
 		new JobSeekerEducationService();
 	private List<JobSeekerEducation> educations;
-	public EducationListPanel(String id) {
+	public EducationListPanel(String id){
+		this(id,false);
+	}
+	
+	public EducationListPanel(String id, Boolean reload) {
 		super(id);
-		educations = jobSeekerEducationService.find(getJESession().getUser().getJobSeeker());
+		if(reload) {
+			educations = jobSeekerEducationService.find(getJESession()
+					.getUser().getJobSeeker());
+		} else {
+			educations = getJESession().getUser().getJobSeeker().getEducations();
+		}
 		final ListView eachEducation = new ListView("eachEducation", educations){
 			protected void populateItem(final ListItem item) {
 				final JobSeekerEducation education = 

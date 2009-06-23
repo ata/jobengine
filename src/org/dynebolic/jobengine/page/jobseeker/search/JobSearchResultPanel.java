@@ -1,14 +1,9 @@
 package org.dynebolic.jobengine.page.jobseeker.search;
 
-import java.sql.Date;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-
-import javax.swing.text.DateFormatter;
-
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
@@ -17,18 +12,19 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.dynebolic.jobengine.entity.Job;
-import org.dynebolic.jobengine.entity.JobSeeker;
 import org.dynebolic.jobengine.page.BasePage;
-import org.dynebolic.jobengine.page.administrator.job.JobMasterGridPanel;
-import org.dynebolic.jobengine.page.jobseeker.submit.JobSeekerSubmitPanel;
 import org.dynebolic.jobengine.service.JobService;
+import org.dynebolic.library.AjaxLazyLoadPanel;
 
+@SuppressWarnings("serial")
 public class JobSearchResultPanel extends Panel {
 	private JobService service = new JobService();
 	private Integer lastPage;
-	private Integer maxResultPage = 2;
+	private Integer maxResultPage = 10;
 	private Integer resultSize;
 	private DateFormat dateFormat =  DateFormat.getDateInstance(DateFormat.FULL);
+	private Component content;
+	
 	
 	public JobSearchResultPanel(String id, String keywords, BasePage basePage) {
 		this(id,keywords,basePage,1);
@@ -85,8 +81,14 @@ public class JobSearchResultPanel extends Panel {
 		final int previusPage = page -1;
 		AjaxLink previousLink = new AjaxLink("previousLink") {
 			public void onClick(AjaxRequestTarget target) {
+				
+				content = new AjaxLazyLoadPanel("content"){
+					public Component getLazyLoadComponent(String id) {
+						return new JobSearchResultPanel(id, keywords, basePage,previusPage);
+					}
+				};
 				//
-				Panel content = new JobSearchResultPanel("content", keywords, basePage,previusPage);
+				//Panel content = new JobSearchResultPanel("content", keywords, basePage,previusPage);
 				content.setOutputMarkupId(true);
 				basePage.addOrReplace(content);
 				target.addComponent(content);
@@ -109,8 +111,17 @@ public class JobSearchResultPanel extends Panel {
 				final Integer pageNum = (Integer) item.getModelObject();
 				AjaxLink numPageLink = new AjaxLink("numPageLink") {
 					public void onClick(AjaxRequestTarget target) {
-						Panel content = new JobSearchResultPanel("content", 
-								keywords, basePage,pageNum);
+						
+						content = new AjaxLazyLoadPanel("content"){
+							public Component getLazyLoadComponent(String id) {
+								return new JobSearchResultPanel("content", 
+										keywords, basePage,pageNum);
+							}
+						};
+						
+						
+						//Panel content = new JobSearchResultPanel("content", 
+						//		keywords, basePage,pageNum);
 						content.setOutputMarkupId(true);
 						basePage.addOrReplace(content);
 						target.addComponent(content);
@@ -126,7 +137,14 @@ public class JobSearchResultPanel extends Panel {
 		final int nextPage = page + 1;
 		AjaxLink nextLink = new AjaxLink("nextLink") {
 			public void onClick(AjaxRequestTarget target) {
-				Panel content = new JobSearchResultPanel("content", keywords, basePage,nextPage);
+				
+				content = new AjaxLazyLoadPanel("content"){
+					public Component getLazyLoadComponent(String id) {
+						return new JobSearchResultPanel("content", keywords, basePage,nextPage);
+					}
+				};
+				
+				//Panel content = new JobSearchResultPanel("content", keywords, basePage,nextPage);
 				content.setOutputMarkupId(true);
 				basePage.addOrReplace(content);
 				target.addComponent(content);

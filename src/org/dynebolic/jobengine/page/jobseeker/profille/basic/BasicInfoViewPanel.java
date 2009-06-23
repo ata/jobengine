@@ -25,6 +25,8 @@ public abstract class BasicInfoViewPanel extends BasePanel{
 		add(new Label("country",jobSeeker.getCountry()!=null?jobSeeker.getCountry().getName():"-"));
 		add(new Label("currentLocation", jobSeeker.getCurrentLocation()!=null?jobSeeker.getCurrentLocation().getName():"-"));
 		add(new Label("address", jobSeeker.getAddress()));
+		add(new Label("description", jobSeeker.getDescription()
+				.replaceAll("\n", "<br/>")).setEscapeModelStrings(false));
 		
 		add(new AjaxLink("editLink") { 
 			public void onClick(AjaxRequestTarget target) {

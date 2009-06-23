@@ -41,7 +41,7 @@ public class JobSeekerMenuPanel extends Panel {
 				// TODO Auto-generated method stub
 				content = new AjaxLazyLoadPanel("content"){
 					public Component getLazyLoadComponent(String id) {
-						return  new ProfilePanel(id);
+						return  new ProfilePanel(id,page);
 					}
 				};
 				//content = new ProfilePanel("content");
