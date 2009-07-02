@@ -1,0 +1,20 @@
+<html>
+<wicket:panel>
+	<div class="success" id="messageSend" style="display: none;">
+		 Success to  Send Message!
+	</div>
+	<div class="success" id="successBookmarks" style="display: none;">
+		Applicant moving to bookmarks
+	</div>
+	<h2>Applicant Submiteds</h2>
+	<div wicket:id="eachJob">
+		<fieldset>
+			<legend><a wicket:id="jobDetailLink"><span wicket:id="jobTitle"/></a></legend>
+			<div wicket:id="detailModal"/>
+			<div wicket:id="eachJobSeeker">
+				<div wicket:id="jsItem"/>
+			</div>
+		</fieldset>
+	</div>
+</wicket:panel>
+</html>

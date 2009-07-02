@@ -308,3 +308,25 @@ div.result h3{
 .readed_msg{
 	font-weight: bold;
 }
+table.submited{
+	margin-top: 20px;
+}
+table.submited h3{
+	margin: 0;
+	padding: 0;
+}
+table.submited th{
+	width: 150px;
+}
+table.submited th,table.submited td{
+	line-height: normal;
+}
+.photo_container{
+	width:150px;
+	position: relative;
+}
+.sbphoto{
+	position: absolute;
+	top: 0;
+	left: 0;
+}

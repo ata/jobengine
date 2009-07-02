@@ -1,0 +1,33 @@
+<html>
+<wicket:panel>
+	<table class="submited"">
+		<tr>
+			<td rowspan="5" class="photo_container">
+				<span wicket:id="photo" class="sbphoto"/>
+			</td>
+			<th colspan="2"><a wicket:id="detailLink"><h3 wicket:id="title">Programer Heroes</h3></a></th>
+		</tr>
+		<tr>
+			<th>Name</th>
+			<td wicket:id="name">Ahmad Tanwir</td>
+		</tr>
+		<tr>
+			<th>Key Skill</th>
+			<td wicket:id="keySkills">Java, PHP</td>
+		</tr>
+		<tr>
+			<th>Location</th>
+			<td wicket:id="currentLocation.name">Bandung</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div wicket:id="detailModal"/>
+				<div wicket:id="modalMessage"/>
+				<a wicket:id="bookmarksLink">[move to bookmarks]</a> &nbsp; &nbsp;
+				<a wicket:id="messageLink">[send message]</a> &nbsp; &nbsp;
+				<a wicket:id="deleteLink">[delete]</a> 
+			</td>
+		</tr>
+	</table>
+</wicket:panel>
+</html>

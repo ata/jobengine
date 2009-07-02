@@ -1,5 +1,6 @@
 package org.dynebolic.jobengine.service;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -74,7 +75,20 @@ public class JobService extends GenericService<Job> {
 		return jobs;
 	}
 	
-
+	
+	@SuppressWarnings("unchecked")
+	public List<Job> findSubmit(Employer employer){
+		em = EMUtil.createEntityManager();
+		query = em.createQuery("from Job job " +
+				"where job.employer = :employer " +
+				"and job.expired > :now " +
+				"and size(job.submiteds) > 0");
+		query.setParameter("employer", employer);
+		query.setParameter("now", Calendar.getInstance().getTime());
+		return (List<Job>) query.getResultList();
+		
+	}
+	
 	/**
 	 * @param resultSize the resultSize to set
 	 */
