@@ -22,6 +22,15 @@ public class JobSeekerEducationService extends
 		em.close();
 		return list;
 	}
+	public void resetLast(){
+		em = EMUtil.createEntityManager();
+		em.getTransaction().begin();
+		query = em.createQuery("update JobSeekerEducation e set e.last = :last");
+		query.setParameter("last", false);
+		query.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
 	
 	
 	

@@ -1,0 +1,37 @@
+<html>
+<wicket:panel>
+	<fieldset style="border-top:1px solid #E46322">
+		<legend style="font-size:1em">Add Language Skill</legend>
+		<span wicket:id="feedback"/>
+		<form wicket:id="form">
+			<table>
+				<tr>
+					<td>language</td>
+					<td>
+						<select wicket:id="language" >
+							<option>English</option>
+							<option>German</option>  
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>level</td>
+					<td>
+						<select wicket:id="level" >
+							<option>Aktif</option>
+							<option>Pasif</option>  
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<input wicket:id="submit" type="submit" value="add"/>
+						&nbsp;<a wicket:id="cancel">cancel</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</fieldset>
+</wicket:panel>
+</html>

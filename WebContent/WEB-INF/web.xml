@@ -23,6 +23,7 @@
 		<filter-name>WicketFilter</filter-name>
 		<url-pattern>/app/*</url-pattern>
 	</filter-mapping>
+	<!-- 
 	<listener>
 		<listener-class>
 			org.springframework.web.context.ContextLoaderListener
@@ -32,6 +33,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/applicationContextJPA.xml</param-value>
 	</context-param>
-		<welcome-file-list> <welcome-file>index.html</welcome-file>
-		</welcome-file-list>
+	 -->
+	<welcome-file-list> 
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 </web-app>

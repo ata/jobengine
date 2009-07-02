@@ -1,0 +1,25 @@
+<html>
+<wicket:panel>
+	<table class="subgrid">
+		<thead>
+			<th>name</th>
+			<th>year</th>
+			<th>action</th>
+		</thead>
+		<tbody>
+			<tr wicket:id="eachView">
+				<td wicket:id="name"></td>
+				<td wicket:id="year"></td>
+				<td>
+					<a wicket:id="editLink">
+						<img src="app/styles/edit.png" title="edit"/>
+					</a>&nbsp;&nbsp;
+					<a wicket:id="deleteLink">
+						<img src="app/styles/delete.png" title="delete"/>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</wicket:panel>
+</html>

@@ -1,0 +1,27 @@
+<html>
+<wicket:panel>
+	<span id="changed" style="display: none" class="success">Password Changed</span>
+	<table>
+		<tr>
+			<th>Username</th>
+			<td wicket:id="username"></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td wicket:id="emailContainer">
+				<span wicket:id="emailPanel">ata@ostric.org</span> &nbsp;&nbsp;&nbsp;
+				<a wicket:id="editEmailLink">
+					<img src="app/styles/edit.png" title="edit"/>
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td wicket:id="passwordContainer">
+				<a wicket:id="changePasswordLink">Change Password</a>
+				<span wicket:id="passwordPanel"></span>
+			</td>
+		</tr>
+	</table>
+</wicket:panel>
+</html>

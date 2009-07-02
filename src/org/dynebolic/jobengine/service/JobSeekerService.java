@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
 import org.apache.lucene.queryParser.ParseException;
-import org.dynebolic.jobengine.entity.Job;
 import org.dynebolic.jobengine.entity.JobSeeker;
 import org.dynebolic.jobengine.hibernate.support.EMUtil;
 import org.hibernate.search.jpa.FullTextEntityManager;
@@ -25,9 +24,8 @@ public class JobSeekerService extends GenericService<JobSeeker> {
 		em = EMUtil.createEntityManager();
 		FullTextEntityManager fullTextEntityManager = 
 			Search.createFullTextEntityManager(em);
-		String[] defaultKey = {"summary","expired","position","description","ipk",
-				"skills","salary","experience","location.name", "employer.name",
-				"category.name","education.name"};
+		String[] defaultKey = {"title","gender","currentLocation.name",
+				"category.name","country.name","keySkills","preferPosition"};
 		MultiFieldQueryParser parser = new MultiFieldQueryParser(defaultKey,
 				  new StandardAnalyzer());
 		
@@ -44,7 +42,6 @@ public class JobSeekerService extends GenericService<JobSeeker> {
 		fullTextQuery.setFirstResult(first);
 		fullTextQuery.setMaxResults(count);
 		List<JobSeeker> jobseekers = (List<JobSeeker>) fullTextQuery.getResultList();
-		System.out.println("Jobs: " + jobseekers);
 		return jobseekers;
 		
 	}

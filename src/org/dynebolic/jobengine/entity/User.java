@@ -5,12 +5,15 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.dynebolic.jobengine.service.PasswordService;
 
 @Entity
 @Table(name="users")
@@ -42,10 +45,10 @@ public class User implements IEntity{
     @ManyToOne(targetEntity=Role.class,cascade=CascadeType.MERGE)
     private Role role;
     
-    @OneToOne(mappedBy="user",cascade=CascadeType.MERGE)
+    @OneToOne(mappedBy="user",cascade=CascadeType.MERGE,fetch=FetchType.LAZY)
     private Employer employer;
     
-    @OneToOne(mappedBy="user",cascade=CascadeType.MERGE)
+    @OneToOne(mappedBy="user",cascade=CascadeType.MERGE,fetch=FetchType.LAZY)
     private JobSeeker jobSeeker;
 
     public Long getId() {
@@ -170,6 +173,9 @@ public class User implements IEntity{
         return complete;
     }
     
+    public void hashPassword(){
+    	password = PasswordService.encrypt(password);
+    }
     
     
     

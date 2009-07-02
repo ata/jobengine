@@ -86,7 +86,7 @@ public abstract class AjaxLazyLoadPanel extends Panel
 	 *            The components markupid.
 	 * @return The component that must be lazy created.
 	 */
-	public abstract Component getLazyLoadComponent(String markupId);
+	public abstract Component getLazyLoadComponent(String id);
 
 	/**
 	 * @param markupId

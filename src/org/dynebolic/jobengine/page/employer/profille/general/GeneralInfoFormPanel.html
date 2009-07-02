@@ -1,0 +1,60 @@
+<html>
+<wicket:panel>
+	<span wicket:id="feedback"/>
+	<form wicket:id="form">
+		<table>
+			<tr> 
+				<th>Name</th>
+				<td><input wicket:id="name" type="text" /></td>
+			</tr>
+			
+			<tr> 
+				<th>Industry Category</th>
+				<td>
+					<select wicket:id="category" >
+						<option>Male</option>
+						<option>Female</option>  
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>Country</th>
+				<td>
+					<select wicket:id="country">
+						<option>Indonesia</option>
+						<option>Singapure</option>  
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>Location</th>
+				<td>
+					<select wicket:id="location">
+						<option>Bandung</option>
+						<option>Jakarta</option>  
+					</select>
+				</td>
+			</tr>
+			<tr> 
+				<th>Address</th>
+				<td> <textarea wicket:id="address"></textarea> </td>
+			</tr>
+			<tr> 
+				<th>Phone</th>
+				<td><input wicket:id="phone" type="text" /></td>
+			</tr>
+			
+			<tr> 
+				<th>Description</th>
+				<td><textarea wicket:id="description" rows="10"></textarea> </td>
+			</tr>
+			
+			<tr>
+				<td>&nbsp;</td>
+				<td><input wicket:id="submit" value="save" type="submit"/></td>
+			</tr>
+		</table>
+	</form>
+</wicket:panel>
+</html>

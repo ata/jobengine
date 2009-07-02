@@ -40,7 +40,7 @@ public class GenericService<E extends IEntity> implements IService<E> {
 	public E find(Long id) {
 		em = EMUtil.createEntityManager();
 		E e = (E) em.find(_class, id); 
-		em.close();
+		//em.close();
 		return e;
 
 	}

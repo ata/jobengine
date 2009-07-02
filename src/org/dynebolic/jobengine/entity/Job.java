@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -29,12 +30,6 @@ public class Job implements IEntity{
     public Job(){
         
     }
-    public Job(Long id, String summary, String position) {
-        this.id = id;
-        this.summary = summary;
-        this.position = position;
-    }
-
 
 
     @Id
@@ -43,7 +38,7 @@ public class Job implements IEntity{
     private Long id = null;
     
     @Field
-    private String summary = null;
+    private String title = null;
     
     @Field
     private String position = null;
@@ -61,16 +56,14 @@ public class Job implements IEntity{
     private Long salary;
     
     @Field
-    private String skills;
-    
-    @Field
-    private String languages;
-    
-    @Field
     private Integer experience;
     
     @Field
     private String additionalSkills;
+    
+    @Field
+    @Column(length = 1000)
+    private String additionalRequirements;
     
     @Field
     @Column(length = 1000)
@@ -87,14 +80,26 @@ public class Job implements IEntity{
     @IndexedEmbedded
     @ManyToOne(cascade=CascadeType.MERGE)
     private Employer employer;
-
+    
     @IndexedEmbedded
-    @ManyToOne(cascade=CascadeType.MERGE)
+    @ManyToOne(cascade=CascadeType.MERGE,fetch=FetchType.LAZY)
+    private Country country;
+    
+    @IndexedEmbedded
+    @ManyToOne(cascade=CascadeType.MERGE,fetch=FetchType.LAZY)
     private Location location;
     
+    @OneToMany(cascade=CascadeType.ALL,mappedBy="job")
+    private List<JobSkill> skillRequirements;
+    
     @ContainedIn
-    @OneToMany(mappedBy="job",cascade=CascadeType.MERGE)
+    @OneToMany(mappedBy="job",cascade=CascadeType.ALL)
+    private List<JobLanguage> languages;
+    
+    @ContainedIn
+    @OneToMany(mappedBy="job",cascade=CascadeType.ALL)
     private List<JobSubmited> submiteds;
+    
 
     public Long getId() {
         return id;
@@ -146,26 +151,6 @@ public class Job implements IEntity{
     }
 
 
-    public String getSkills() {
-        return skills;
-    }
-
-
-    public void setSkills(String skills) {
-        this.skills = skills;
-    }
-
-
-    public String getLanguages() {
-        return languages;
-    }
-
-
-    public void setLanguages(String languages) {
-        this.languages = languages;
-    }
-
-
     public String getDescription() {
         return description;
     }
@@ -203,22 +188,6 @@ public class Job implements IEntity{
 
     public void setLocation(Location location) {
         this.location = location;
-    }
-
-
-    /**
-     * @param summary the summary to set
-     */
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-
-    /**
-     * @return the summary
-     */
-    public String getSummary() {
-        return summary;
     }
 
 
@@ -261,26 +230,6 @@ public class Job implements IEntity{
     public Integer getExperience() {
         return experience;
     }
-    
-    public void clear()
-    {
-        this.id = null;
-        this.summary = null;
-        this.position = null;
-        this.ipk = null;
-        this.expired = null;
-        this.salary = null;
-        this.skills = null;
-        this.languages = null;
-        this.experience = null;
-        this.additionalSkills = null;
-        this.description = null;
-        this.education = null;
-        this.category = null;
-        this.employer = null;
-        this.location = null;
-    }
-
 
 
     /**
@@ -321,6 +270,56 @@ public class Job implements IEntity{
 	 */
 	public List<JobSubmited> getSubmiteds() {
 		return submiteds;
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param additionalRequirements the additionalRequirements to set
+	 */
+	public void setAdditionalRequirements(String additionalRequirements) {
+		this.additionalRequirements = additionalRequirements;
+	}
+	/**
+	 * @return the additionalRequirements
+	 */
+	public String getAdditionalRequirements() {
+		return additionalRequirements;
+	}
+	public void setSkillRequirements(List<JobSkill> skillRequirements) {
+		this.skillRequirements = skillRequirements;
+	}
+	public List<JobSkill> getSkillRequirements() {
+		return skillRequirements;
+	}
+
+
+	public void setLanguages(List<JobLanguage> languages) {
+		this.languages = languages;
+	}
+
+
+	public List<JobLanguage> getLanguages() {
+		return languages;
+	}
+
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
+
+	public Country getCountry() {
+		return country;
 	}
     
     

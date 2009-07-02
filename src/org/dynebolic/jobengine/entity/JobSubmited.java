@@ -30,8 +30,6 @@ public class JobSubmited implements IEntity {
     
     private Boolean approved = false;
     
-    private Boolean ignore = false;
-    
     @Column(length=1000)
     private String message;
 
@@ -93,17 +91,6 @@ public class JobSubmited implements IEntity {
 
     public String getMessage() {
         return message;
-    }
-
-    public void setIgnore(Boolean ignore) {
-        this.ignore = ignore;
-    }
-
-    public Boolean getIgnore() {
-        return ignore;
-    }
-    
-    
-    
+    }  
     
 }

@@ -1,0 +1,33 @@
+<html>
+<wicket:panel>
+	<div style="margin: 20px">
+	<span id="sended" style="display: none" class="success">Message has been Send</span>
+	<fieldset>
+		<legend>Message to: <label wicket:id="toLabel"/></legend>
+		<span wicket:id="feedback"/>
+		<form wicket:id="form">
+			<table>
+				<tr>
+					<td>subject:</td>
+				</tr>
+				<tr>
+					<td><input wicket:id="subject" type="text" style="width: 100%"></td>
+				</tr>
+				<tr>
+					<td>body:</td>
+				</tr>
+				<tr>
+					<td><textarea wicket:id="body" rows="12"></textarea></td>
+				</tr>
+				<tr>
+					<td>
+						<input wicket:id="submit" type="submit" value="Send"/>
+						&nbsp;<a wicket:id="cancel">cancel</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</fieldset>
+	</div>
+</wicket:panel>
+</html>

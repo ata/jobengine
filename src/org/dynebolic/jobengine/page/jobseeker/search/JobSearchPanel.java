@@ -36,7 +36,7 @@ public class JobSearchPanel extends Panel {
 					}
 				};
 				
-				//Panel content = new JobSearchResultPanel("content", keywords, page);
+				//Panel content = new ApplicantSearchResultPanel("content", keywords, page);
 				content.setOutputMarkupId(true);
 				page.addOrReplace(content);
 				target.addComponent(content);

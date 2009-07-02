@@ -19,7 +19,7 @@ public class UserService extends GenericService<User>{
 		Query q = em.createQuery("from User u " +
 				"where (u.username = :username AND u.password = :password)" +
 				"OR (u.email = :username AND u.password = :password)");
-		q.setParameter("password", password);
+		q.setParameter("password", PasswordService.encrypt(password));
 		q.setParameter("username",username);
 		User user = null; 
 			
@@ -70,4 +70,27 @@ public class UserService extends GenericService<User>{
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	public void emailUpdate(String email, Long id){
+		em = EMUtil.createEntityManager();
+		em.getTransaction().begin();
+		query = em.createQuery("update User e set e.email = :email where id = :id");
+		query.setParameter("email", email);
+		query.setParameter("id", id);
+		query.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void passwordUpdate(String password, Long id){
+		em = EMUtil.createEntityManager();
+		em.getTransaction().begin();
+		query = em.createQuery("update User e set e.password = :password where id = :id");
+		query.setParameter("password", password);
+		query.setParameter("id", id);
+		query.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 }

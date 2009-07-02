@@ -51,8 +51,8 @@ public class JobService extends GenericService<Job> {
 		em = EMUtil.createEntityManager();
 		FullTextEntityManager fullTextEntityManager = 
 			Search.createFullTextEntityManager(em);
-		String[] defaultKey = {"summary","expired","position","description","ipk",
-				"skills","salary","experience","location.name", "employer.name",
+		String[] defaultKey = {"title","expired","position","description","ipk",
+				"salary","experience","location.name", "employer.name",
 				"category.name","education.name"};
 		MultiFieldQueryParser parser = new MultiFieldQueryParser(defaultKey,
 				  new StandardAnalyzer());

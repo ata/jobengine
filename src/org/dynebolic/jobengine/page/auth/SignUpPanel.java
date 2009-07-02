@@ -2,6 +2,7 @@ package org.dynebolic.jobengine.page.auth;
 
 import java.util.List;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
@@ -25,11 +26,14 @@ import org.dynebolic.jobengine.entity.Employer;
 import org.dynebolic.jobengine.entity.JobSeeker;
 import org.dynebolic.jobengine.entity.Role;
 import org.dynebolic.jobengine.entity.User;
+import org.dynebolic.jobengine.page.BasePage;
 import org.dynebolic.jobengine.page.BasePanel;
+import org.dynebolic.jobengine.page.jobseeker.JobSeekerPage;
 import org.dynebolic.jobengine.service.EmployerService;
 import org.dynebolic.jobengine.service.JobSeekerService;
 import org.dynebolic.jobengine.service.RoleService;
 import org.dynebolic.jobengine.service.UserService;
+import org.dynebolic.library.AjaxLazyLoadPanel;
 
 @SuppressWarnings("serial")
 public class SignUpPanel extends BasePanel {
@@ -39,7 +43,7 @@ public class SignUpPanel extends BasePanel {
 	private UserService userService = new UserService();
 	private JobSeekerService jobSeekerService = new JobSeekerService();
 	private EmployerService employerService = new EmployerService();
-	public SignUpPanel(String id) {
+	public SignUpPanel(String id, final BasePage page) {
 		super(id);
 		user = new User();
 		final FeedbackPanel feedback = new FeedbackPanel("feedback");
@@ -118,6 +122,9 @@ public class SignUpPanel extends BasePanel {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form form) {
 				user.setComplete(false);
+				user.hashPassword();
+				user.getUsername().toLowerCase();
+				user.getEmail().toLowerCase();
 				if(user.getRole().getName().equalsIgnoreCase("JobSeeker")){
 					JobSeeker jobSeeker = new JobSeeker();
 					jobSeeker.setName(user.getName());
@@ -128,15 +135,28 @@ public class SignUpPanel extends BasePanel {
 					Employer employer = new Employer();
 					employer.setUser(user);
 					employer.setName(user.getName());
+					employer.setPhoto(getUploadPath() + "default_photo.gif");
 					employerService.save(employer);
 				}
-				target.addComponent(feedback);
+				//target.addComponent(feedback);
 				//target.appendJavascript("Modalbox.show($('successRegister'))");
+				Component content = new AjaxLazyLoadPanel("content"){
+					public Component getLazyLoadComponent(String id) {
+						return new SignUpSuccessPanel(id);
+					}
+				};
+				//content = new SignUpPanel("content");
+				content.setOutputMarkupId(true);
+				page.addOrReplace(content);
+				target.addComponent(content);
+				
 				
 			}
 			
 			protected void onError(AjaxRequestTarget target, Form form)
             {
+				user.setPassword("");
+				SignUpPanel.this.validatePassword = "";
                 target.addComponent(feedback);
                 //target.appendJavascript("Modalbox.resizeToContent();" +
                 	//	"new Effect.Shake('MB_window')");
@@ -160,5 +180,4 @@ public class SignUpPanel extends BasePanel {
 	public String getValidatePassword() {
 		return validatePassword;
 	}
-
 }

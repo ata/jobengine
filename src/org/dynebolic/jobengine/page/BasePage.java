@@ -16,14 +16,11 @@ public class BasePage extends WebPage implements IAjaxIndicatorAware{
 		// Javascript
 		add(new WebMarkupContainer("prototypejs"));
 		add(new WebMarkupContainer("scriptaculousjs"));
-		add(new WebMarkupContainer("modalboxjs"));
-		add(new WebMarkupContainer("niceditjs"));
 		add(new WebMarkupContainer("mainjs"));
 		//CSS
 		add(new WebMarkupContainer("resetcss"));
 		add(new WebMarkupContainer("textcss"));
 		add(new WebMarkupContainer("960css"));
-		add(new WebMarkupContainer("modalboxcss"));
 		
 		add(new WebMarkupContainer("glossymenucss"));
 		add(new WebMarkupContainer("maincss"));

@@ -1,6 +1,7 @@
 package org.dynebolic.jobengine.entity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,6 +29,7 @@ public class JobSeekerLanguage implements IEntity {
     private Language language;
     
     @Field
+    @Column(name="spokenLevel")
     private String level;
     
     @ManyToOne(cascade=CascadeType.MERGE)

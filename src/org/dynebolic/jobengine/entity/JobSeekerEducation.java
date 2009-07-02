@@ -37,14 +37,16 @@ public class JobSeekerEducation implements IEntity{
     @Field
     private String institute;
     
-    @Column(length=4)
+    @Column(length=4,name="startYear")
     private Integer start;
     
-    @Column(length=4)
+    @Column(length=4,name="doneYear")
     private Integer done;
     
     @Field
     private Double ipk;
+    
+    private boolean last;
 
     public Long getId() {
         return id;
@@ -127,6 +129,20 @@ public class JobSeekerEducation implements IEntity{
     public Integer getDone() {
         return done;
     }
+
+	/**
+	 * @param last the last to set
+	 */
+	public void setLast(boolean last) {
+		this.last = last;
+	}
+
+	/**
+	 * @return the last
+	 */
+	public boolean isLast() {
+		return last;
+	}
     
     
     

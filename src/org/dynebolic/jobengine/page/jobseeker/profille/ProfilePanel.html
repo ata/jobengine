@@ -1,48 +1,38 @@
 <html>
 <wicket:panel>
 	<fieldset>
-		<legend>Basic Information</legend>
+		<legend>General Information</legend>
 		<span wicket:id="basicInfoPanel" />
 	</fieldset>
-	
 	<fieldset>
-		<legend>Experience Information</legend>
-		<table>
-			<tr> 
-				<th>Education</th>
-				<td>
-					<span wicket:id="educationPanel"/>
-				</td>
-			</tr>
-			<tr> 
-				<th>Certificate</th>
-				<td>
-					<span wicket:id="certificatePanel"/>
-				</td>
-			</tr>
-			<tr> 
-				<th>Carier</th>
-				<td>
-					<span wicket:id="carierPanel"/>
-				</td>
-			</tr>
-			<tr> 
-				<th>Skill</th>
-				<td>
-					<span wicket:id="skillPanel"/>
-				</td>
-			</tr>
-			<tr> 
-				<th>Language Skill</th>
-				<td>
-					<span wicket:id="languagePanel"/>
-				</td>
-			</tr>
-		</table>
+		<legend>Education Information</legend>
+		<span wicket:id="educationPanel"/>
+	</fieldset>
+	<fieldset>
+		<legend>Certificate Information</legend>
+		<span wicket:id="certificatePanel"/>
+	</fieldset>
+	<fieldset>
+		<legend>Carier Information</legend>
+		<span wicket:id="carierPanel"/>
+	</fieldset>
+	<fieldset>
+		<legend>Skill Information</legend>
+		<span wicket:id="skillPanel"/>
+	</fieldset>
+	<fieldset>
+		<legend>Language Information</legend>
+		<span wicket:id="languagePanel"/>
 	</fieldset>
 	<fieldset>
 		<legend>Upload Picture</legend>
 		<span wicket:id="uploadPanel"/>
 	</fieldset>
+	<fieldset>
+		<legend>Account</legend>
+		<span wicket:id="accountPanel"/>
+	</fieldset>
+	<div wicket:id="modal"></div>
+	<a wicket:id="previewLink" class="preview_link"><h3>preview</h3></a>
 </wicket:panel>
 </html>

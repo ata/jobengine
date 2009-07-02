@@ -4,12 +4,14 @@ import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.dynebolic.jobengine.page.BasePanel;
 import org.dynebolic.jobengine.page.jobseeker.directory.JobDirectoryPanel;
+import org.dynebolic.jobengine.page.jobseeker.preview.ApplicantPreviewPanel;
 import org.dynebolic.jobengine.page.jobseeker.profille.ProfilePanel;
 import org.dynebolic.library.AjaxLazyLoadPanel;
 
 @SuppressWarnings("serial")
-public class JobSeekerMenuPanel extends Panel {
+public class JobSeekerMenuPanel extends BasePanel {
 	private Component content;
 	
 	public JobSeekerMenuPanel(String id, final JobSeekerPage page) {
@@ -35,6 +37,8 @@ public class JobSeekerMenuPanel extends Panel {
 			}
 		};
 		add(applicantDirecoryLink);
+		
+		
 		AjaxLink profileLink = new AjaxLink("profileLink"){
 			@Override
 			public void onClick(AjaxRequestTarget target) {

@@ -33,7 +33,9 @@ public class Message implements IEntity {
     
     private Date messageDate;
     
-    private Boolean readed = false;
+    private boolean readed = false;
+    
+    private boolean requestReply = false;
 
     public Long getId() {
         return id;
@@ -95,19 +97,21 @@ public class Message implements IEntity {
         return messageTo;
     }
 
-    /**
-     * @param readed the readed to set
-     */
-    public void setReaded(Boolean readed) {
-        this.readed = readed;
-    }
+	public void setReaded(boolean readed) {
+		this.readed = readed;
+	}
 
-    /**
-     * @return the readed
-     */
-    public Boolean getReaded() {
-        return readed;
-    }
+	public boolean isReaded() {
+		return readed;
+	}
+
+	public void setRequestReply(boolean requestReply) {
+		this.requestReply = requestReply;
+	}
+
+	public boolean isRequestReply() {
+		return requestReply;
+	}
     
     
 

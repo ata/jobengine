@@ -88,7 +88,7 @@ public class JobSearchResultPanel extends Panel {
 					}
 				};
 				//
-				//Panel content = new JobSearchResultPanel("content", keywords, basePage,previusPage);
+				//Panel content = new ApplicantSearchResultPanel("content", keywords, basePage,previusPage);
 				content.setOutputMarkupId(true);
 				basePage.addOrReplace(content);
 				target.addComponent(content);
@@ -120,7 +120,7 @@ public class JobSearchResultPanel extends Panel {
 						};
 						
 						
-						//Panel content = new JobSearchResultPanel("content", 
+						//Panel content = new ApplicantSearchResultPanel("content", 
 						//		keywords, basePage,pageNum);
 						content.setOutputMarkupId(true);
 						basePage.addOrReplace(content);
@@ -144,7 +144,7 @@ public class JobSearchResultPanel extends Panel {
 					}
 				};
 				
-				//Panel content = new JobSearchResultPanel("content", keywords, basePage,nextPage);
+				//Panel content = new ApplicantSearchResultPanel("content", keywords, basePage,nextPage);
 				content.setOutputMarkupId(true);
 				basePage.addOrReplace(content);
 				target.addComponent(content);

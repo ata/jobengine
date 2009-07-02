@@ -1,0 +1,54 @@
+<html>
+<wicket:panel>
+	<div class="grid_9 content">
+		<div class="warning" id="notEmployer" style="display: none;">
+			Sorry.. you must login with employer to access this feature!
+		</div>
+	
+		<div class="success" id="messageSend" style="display: none;">
+			 Success to  Send Message!
+		</div>
+		<div class="success" id="successBookmarks" style="display: none;">
+			 Success to  Bookmarks Applicant!
+		</div>
+		<div class="resultInfo">
+			Found <b><span wicket:id="resultSize"/></b> Applicant result with <b>
+			<span wicket:id="keywords"/></b> keywords
+		</div>
+		
+		<table wicket:id="eachResult" class="result">
+			<tr>
+				<th>
+					<div wicket:id="modalDetail"/>
+					<a wicket:id="detailLink"><h3><span wicket:id="title"/></h3></a>
+					<span wicket:id="miscContainer">
+						<div wicket:id="modalMessage"/>
+						<a wicket:id="bookmarksLink"><img title="bookmarks" src="app/styles/bookmarks.png"></a>
+						&nbsp;&nbsp;
+						<a wicket:id="messageLink"><img title="send message" src="app/styles/message.png"></a>
+					</span>
+				</th>
+			</tr>
+			<tr>
+				<td>key skills: <span wicket:id="keySkills"/></td>
+			</tr>
+			<tr>
+				<td>current location: <span wicket:id="currentLocation.name"/></td>
+			</tr>
+			<tr>
+				<td>prefer position: <span wicket:id="preferPosition"/></td>
+			</tr>
+		</table>
+		
+		<div class="nav_result">
+			<a wicket:id="previousLink" href="#">[previous]</a>
+			<span wicket:id="pageNav">
+				<a wicket:id="numPageLink">
+					<span wicket:id="numPageLabel"/>
+				</a>
+			</span>
+			<a wicket:id="nextLink" href="#">[next]</a>
+		</div>
+	</div>
+</wicket:panel>
+</html>

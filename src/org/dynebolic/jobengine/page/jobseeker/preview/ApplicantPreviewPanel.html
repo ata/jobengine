@@ -1,0 +1,179 @@
+<html>
+<wicket:panel>
+	<div style="margin: 20px">
+	<h1>Curiculum Vitae</h1>
+	<fieldset class="personal">
+		<legend>Personal Information</legend>
+		<span wicket:id="photo" class="cvphoto"></span>
+		<table>
+			<tr> 
+				<th>Full Name</th>
+				<td wicket:id="name">Ahmad Tanwir</td>
+			</tr>
+			<tr> 
+				<th>Birth Place</th>
+				<td wicket:id="birthPlace" >Tunjang</td>
+			</tr>
+			<tr> 
+				<th>Birth Date</th>
+				<td wicket:id="birthDate" >20 November 1987</td>
+			</tr>
+			<tr> 
+				<th>Religion</th>
+				<td wicket:id="religion.name" >Region</td>
+			</tr>
+			<tr> 
+				<th>Gender</th>
+				<td wicket:id="gender" >Male</td>
+			</tr>
+			<tr>
+				<th>Country</th>
+				<td wicket:id="country.name" >Indonesia</td>
+			</tr>
+			<tr>
+				<th>Current Location</th>
+				<td wicket:id="currentLocation.name" >Bandung</td>
+			</tr>
+			<tr> 
+				<th>Street Address</th>
+				<td wicket:id="address" >Jl. Cipaku I No.55</td>
+			</tr>
+			<tr> 
+				<th>phone</th>
+				<td wicket:id="phone" >Male</td>
+			</tr>
+			<tr> 
+				<th>Cellular</th>
+				<td wicket:id="cellular" >Male</td>
+			</tr>
+			
+			<tr> 
+				<th>Persoal Web</th>
+				<td wicket:id="personalWeb" >Male</td>
+			</tr>
+			
+			<tr> 
+				<th>Job Category</th>
+				<td wicket:id="category.name" >Male</td>
+			</tr>
+			
+			<tr> 
+				<th>Prefer Position</th>
+				<td wicket:id="preferPosition">Male</td>
+			</tr>
+	
+			<tr> 
+				<th>Description</th>
+				<td wicket:id="description">
+					Mo nambahin doank. FP bukan cuma sekedar closure ato mathematical domain.
+					Keunggulan utama FP di enterprise app adalah code yang kita tulis itu gak
+					selalu dicompile jadi executable instruction. Gak kayak OO, di FP itu code
+					yang kita tulis gak selalu berarti bakal dirun saat runtime. Function di FP
+					bisa dicompile semata2 sebagai AST structure (e.g. lambda expression), yang
+					bisa di-reflect saat runtime.
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	<fieldset>
+		<legend>Education Information</legend>
+		<table class="subgrid">
+			<thead>
+				<th>grade</th>
+				<th>faculty</th>
+				<th>institute</th>
+				<th>start</th>
+				<th>done</th>
+				<th>ipk</th>
+				<th>last</th>
+			</thead>
+			<tbody>
+				<tr wicket:id="eachEducation">
+					<td wicket:id="level.name"></td>
+					<td wicket:id="faculty"></td>
+					<td wicket:id="institute"></td>
+					<td wicket:id="start"></td> 
+					<td wicket:id="done"></td>
+					<td wicket:id="ipk"></td>
+					<td wicket:id="lastLabel"></td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Carier Information</legend>
+		<table class="subgrid">
+			<thead>
+				<th>institute</th>
+				<th>position</th>
+				<th>start</th>
+				<th>done</th>
+			</thead>
+			<tbody>
+				<tr wicket:id="eachCarier">
+					<td wicket:id="institute"></td>
+					<td wicket:id="position"></td>
+					<td wicket:id="start"></td>
+					<td wicket:id="done"></td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Certificate Information</legend>
+			<table class="subgrid">
+			<thead>
+				<th>name</th>
+				<th>year</th>
+			</thead>
+			<tbody>
+				<tr wicket:id="eachCertificate">
+					<td wicket:id="name"></td>
+					<td wicket:id="year"></td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Skill Information</legend>
+		<table class="subgrid">
+			<thead>
+				<th>name</th>
+				<th>detail</th>
+				<th>experience</th>
+			</thead>
+			<tbody>
+				<tr wicket:id="eachSkill">
+					<td wicket:id="name"></td>
+					<td wicket:id="detail"></td>
+					<td><span wicket:id="experience"/> year</td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
+	<fieldset>
+		<legend>Language Spoken Information</legend>
+		<table class="subgrid">
+			<thead>
+				<th>Language</th>
+				<th>Level</th>
+			</thead>
+			<tbody>
+				<tr wicket:id="eachLanguage">
+					<td wicket:id="language.name"></td>
+					<td wicket:id="level"></td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
+	<hr/>
+	<div class="preview_misc">
+		<a wicket:id="closeLink">[close]</a>
+	</div>
+	</div>
+</wicket:panel>
+</html>

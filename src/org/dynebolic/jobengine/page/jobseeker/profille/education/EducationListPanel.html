@@ -1,0 +1,35 @@
+<html>
+<wicket:panel>
+	<table class="subgrid">
+		<thead>
+			<th>grade</th>
+			<th>faculty</th>
+			<th>institute</th>
+			<th>start</th>
+			<th>done</th>
+			<th>ipk</th>
+			<th>last</th>
+			<th>action</th>
+		</thead>
+		<tbody>
+			<tr wicket:id="eachEducation">
+				<td wicket:id="level.name"></td>
+				<td wicket:id="faculty"></td>
+				<td wicket:id="institute"></td>
+				<td wicket:id="start"></td> 
+				<td wicket:id="done"></td>
+				<td wicket:id="ipk"></td>
+				<td wicket:id="lastLabel"></td>
+				<td>
+					<a wicket:id="editLink">
+						<img src="app/styles/edit.png" title="edit"/>
+					</a>&nbsp;&nbsp;
+					<a wicket:id="deleteLink">
+						<img src="app/styles/delete.png" title="delete"/>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</wicket:panel>
+</html>

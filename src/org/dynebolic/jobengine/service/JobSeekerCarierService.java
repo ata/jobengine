@@ -23,6 +23,16 @@ public class JobSeekerCarierService extends
 		return cariers;
 	}
 	
+	public void resetLast(){
+		em = EMUtil.createEntityManager();
+		em.getTransaction().begin();
+		query = em.createQuery("update JobSeekerCarier e set e.last = :last");
+		query.setParameter("last", false);
+		query.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	
 	
 }

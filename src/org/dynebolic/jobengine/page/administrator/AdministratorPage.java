@@ -8,10 +8,11 @@ import org.dynebolic.jobengine.entity.EducationLevel;
 import org.dynebolic.jobengine.entity.JobCategory;
 import org.dynebolic.jobengine.entity.Language;
 import org.dynebolic.jobengine.entity.Location;
+import org.dynebolic.jobengine.entity.Religion;
 import org.dynebolic.jobengine.page.BasePage;
 import org.dynebolic.jobengine.page.administrator.generic.GenericMasterPage;
 import org.dynebolic.jobengine.page.administrator.group.GroupPage;
-import org.dynebolic.jobengine.page.administrator.job.JobMasterPage;
+import org.dynebolic.jobengine.page.administrator.profile.ProfilePage;
 import org.dynebolic.jobengine.page.jobseeker.search.JobSearchPanel;
 
 @AuthorizeInstantiation("Administrator")
@@ -49,6 +50,13 @@ public class AdministratorPage extends BasePage{
 			}
 			
 		});
+		add(new Link("regionLink"){
+			@Override
+			public void onClick() {
+				setResponsePage(new GenericMasterPage<Religion>(Religion.class));
+			}
+			
+		});
 		add(new Link("educationLink"){
 			@Override
 			public void onClick() {
@@ -63,10 +71,10 @@ public class AdministratorPage extends BasePage{
 			}
 			
 		});
-		add(new Link("jobMasterLink"){
+		add(new Link("profileLink"){
 			@Override
 			public void onClick() {
-				setResponsePage(new JobMasterPage());
+				setResponsePage(new ProfilePage());
 			}
 			
 		});

@@ -1,0 +1,108 @@
+<html>
+<wicket:panel>
+	<span wicket:id="feedback"/>
+	<form wicket:id="form">
+		<table>
+			<tr> 
+				<th>Full Name</th>
+				<td><input wicket:id="name" type="text" /></td>
+			</tr>
+			<tr> 
+				<th>Birth Place</th>
+				<td><input wicket:id="birthPlace" type="text" /></td>
+			</tr>
+			<tr> 
+				<th>Birth Date</th>
+				<td><input wicket:id="birthDate" type="text" /></td>
+			</tr>
+			<tr> 
+				<th>Religion</th>
+				<td>
+					<select wicket:id="religion" >
+						<option>Male</option>
+						<option>Female</option>  
+					</select>
+				</td>
+			</tr>
+			<tr> 
+				<th>Gender</th>
+				<td>
+					<select wicket:id="gender" >
+						<option>Male</option>
+						<option>Female</option>  
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>Country</th>
+				<td>
+					<select wicket:id="country">
+						<option>Indonesia</option>
+						<option>Singapure</option>  
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>Current Location</th>
+				<td>
+					<select wicket:id="currentLocation">
+						<option>Bandung</option>
+						<option>Jakarta</option>  
+					</select>
+				</td>
+			</tr>
+			<tr> 
+				<th>Street Address</th>
+				<td> <textarea wicket:id="address"></textarea> </td>
+			</tr>
+			<tr> 
+				<th>Phone</th>
+				<td><input wicket:id="phone" type="text" /></td>
+			</tr>
+			<tr> 
+				<th>Mobile Phone</th>
+				<td><input wicket:id="cellular" type="text" /></td>
+			</tr>
+			
+			<tr> 
+				<th>Personal Web</th>
+				<td><input wicket:id="personalWeb" type="text" /></td>
+			</tr>
+			
+			<tr> 
+				<th>Public Title</th>
+				<td><input wicket:id="title" type="text" /></td>
+			</tr>
+			
+			<tr> 
+				<th>Job Category</th>
+				<td>
+					<select wicket:id="category" >
+						<option>Male</option>
+						<option>Female</option>  
+					</select>
+				</td>
+			</tr>
+			
+			<tr> 
+				<th>Prefer Position</th>
+				<td><input wicket:id="preferPosition" type="text" /></td>
+			</tr>
+			<tr> 
+				<th>Key Skills</th>
+				<td><input wicket:id="keySkills" type="text" /></td>
+			</tr>
+			
+			<tr> 
+				<th>Description</th>
+				<td> <textarea wicket:id="description" rows="10"></textarea> </td>
+			</tr>
+			
+			<tr>
+				<td>&nbsp;</td>
+				<td><input wicket:id="submit" value="save" type="submit"/></td>
+			</tr>
+		</table>
+	</form>
+</wicket:panel>
+</html>

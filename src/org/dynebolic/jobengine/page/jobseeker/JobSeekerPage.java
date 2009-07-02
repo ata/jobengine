@@ -1,32 +1,22 @@
 package org.dynebolic.jobengine.page.jobseeker;
 
-import java.io.File;
-
 import org.apache.wicket.Component;
-import org.apache.wicket.ResourceReference;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.WebResource;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.image.ContextImage;
-import org.apache.wicket.markup.html.image.Image;
-import org.apache.wicket.markup.html.image.resource.DynamicImageResource;
-import org.apache.wicket.markup.html.link.PageLink;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.util.resource.FileResourceStream;
-import org.apache.wicket.util.resource.IResourceStream;
 import org.dynebolic.jobengine.page.BasePage;
-import org.dynebolic.jobengine.page.auth.SignInPage;
 import org.dynebolic.jobengine.page.auth.SignInPanel;
 import org.dynebolic.jobengine.page.auth.SignUpPanel;
 import org.dynebolic.jobengine.page.jobseeker.directory.JobDirectoryPanel;
 import org.dynebolic.jobengine.page.jobseeker.profille.ProfilePanel;
 import org.dynebolic.jobengine.page.jobseeker.search.JobSearchPanel;
-import org.dynebolic.jobengine.service.UserService;
 import org.dynebolic.library.AjaxLazyLoadPanel;
 import org.dynebolic.library.PictureViewPanel;
+
+@SuppressWarnings("serial")
 
 public class JobSeekerPage extends BasePage{
 	protected Panel content;
@@ -57,7 +47,7 @@ public class JobSeekerPage extends BasePage{
 			public void onClick(AjaxRequestTarget target) {
 				content = new AjaxLazyLoadPanel("content"){
 					public Component getLazyLoadComponent(String id) {
-						return new SignUpPanel(id);
+						return new SignUpPanel(id, JobSeekerPage.this);
 					}
 				};
 				//content = new SignUpPanel("content");

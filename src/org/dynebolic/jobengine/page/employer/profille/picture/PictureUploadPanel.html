@@ -1,0 +1,21 @@
+<html>
+<wicket:panel>
+	<iframe name="uploadtarget" style="display:none" ></iframe>
+	<span wicket:id="feedback"/>
+	<form wicket:id="formUpload">
+	<table>
+		<tr>
+			<th>File</th>
+			<td><input wicket:id="file" type="file"/></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="submit" value="upload"/></td>
+		</tr>
+		<tr>
+			<td colspan="2"><span wicket:id="progress"></span></td>
+		</tr>
+	</table>
+	</form>
+</wicket:panel>
+</html>

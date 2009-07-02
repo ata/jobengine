@@ -55,6 +55,12 @@ public class JobSeeker implements IEntity{
     @Column(length=1000)
     private String description = "";
     
+    @Field
+    private String title;
+    
+    @Field
+    private String preferPosition;
+    
     private String phone;
     
     private String personalWeb;
@@ -76,6 +82,14 @@ public class JobSeeker implements IEntity{
     
     @IndexedEmbedded
     @ManyToOne(cascade=CascadeType.MERGE)
+    private JobCategory category;
+    
+    @IndexedEmbedded
+    @ManyToOne(cascade=CascadeType.MERGE)
+    private Religion religion;
+    
+    @IndexedEmbedded
+    @OneToOne(cascade=CascadeType.MERGE)
     private JobSeekerEducation lastEducation;
     
     @ContainedIn
@@ -90,9 +104,6 @@ public class JobSeeker implements IEntity{
     @OneToMany(mappedBy="jobSeeker",cascade=CascadeType.MERGE)
     private List<JobSeekerCarier> cariers;
     
-    @ContainedIn
-    @OneToMany(mappedBy="jobSeeker",cascade=CascadeType.MERGE)
-    private List<JobSeekerExperience> experiences;
     
     @ContainedIn
     @OneToMany(mappedBy="jobSeeker",cascade=CascadeType.MERGE)
@@ -213,14 +224,6 @@ public class JobSeeker implements IEntity{
 
     public void setEducations(List<JobSeekerEducation> educations) {
         this.educations = educations;
-    }
-
-    public List<JobSeekerExperience> getExperiences() {
-        return experiences;
-    }
-
-    public void setExperiences(List<JobSeekerExperience> experiences) {
-        this.experiences = experiences;
     }
 
     public List<JobSeekerCertificate> getCertificates() {
@@ -393,6 +396,56 @@ public class JobSeeker implements IEntity{
 	 */
 	public List<JobSubmited> getSubmiteds() {
 		return submiteds;
+	}
+
+	/**
+	 * @param preferPosition the preferPosition to set
+	 */
+	public void setPreferPosition(String preferPosition) {
+		this.preferPosition = preferPosition;
+	}
+
+	/**
+	 * @return the preferPosition
+	 */
+	public String getPreferPosition() {
+		return preferPosition;
+	}
+
+	/**
+	 * @param category the category to set
+	 */
+	public void setCategory(JobCategory category) {
+		this.category = category;
+	}
+
+	/**
+	 * @return the category
+	 */
+	public JobCategory getCategory() {
+		return category;
+	}
+
+	/**
+	 * @param religion the religion to set
+	 */
+	public void setReligion(Religion religion) {
+		this.religion = religion;
+	}
+
+	/**
+	 * @return the religion
+	 */
+	public Religion getReligion() {
+		return religion;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getTitle() {
+		return title;
 	}
 
 

@@ -1,6 +1,7 @@
 package org.dynebolic.jobengine.entity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,8 +29,10 @@ public class JobSeekerCarier implements IEntity{
     @Field
     private String position;
     
+    @Column(name="startYear")
     private Integer start;
     
+    @Column(name="doneYear")
     private Integer done;
     
     @ManyToOne(cascade=CascadeType.MERGE)
@@ -93,16 +96,10 @@ public class JobSeekerCarier implements IEntity{
         return jobSeeker;
     }
 
-    /**
-     * @param position the position to set
-     */
     public void setPosition(String position) {
         this.position = position;
     }
 
-    /**
-     * @return the position
-     */
     public String getPosition() {
         return position;
     }
