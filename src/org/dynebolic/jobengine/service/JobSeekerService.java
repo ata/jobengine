@@ -45,7 +45,7 @@ public class JobSeekerService extends GenericService<JobSeeker> {
 		return jobseekers;
 		
 	}
-
+	
 	/**
 	 * @param resultSize the resultSize to set
 	 */

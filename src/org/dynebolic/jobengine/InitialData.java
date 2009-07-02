@@ -39,28 +39,6 @@ public class InitialData {
 		*/
 		
 		
-		JobService service = new JobService();
-		Job job = service.find(new Long(152));
-		System.out.println(job);
-		System.out.println(job.getSkillRequirements());
-		/*
-		JobService service = new JobService();
-		Job job = new Job();
-		List<JobSkill> list = new ArrayList<JobSkill>();
-		JobSkill s1 = new JobSkill();
-		job.setTitle("HEllo");
-		s1.setName("Java");
-		s1.setJob(job);
-		JobSkill s2 = new JobSkill();
-		s2.setName("Ruby");
-		s2.setJob(job);
-		list.add(s1);
-		list.add(s2);
-		job.setSkillRequirements(list);
-		service.save(job);
-		
-		*/
-		
 	}
 
 }

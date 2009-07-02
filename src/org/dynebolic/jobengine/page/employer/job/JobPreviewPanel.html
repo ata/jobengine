@@ -7,23 +7,23 @@
 			<table>
 				<tr> 
 					<th>Name</th>
-					<td wicket:id="name">Ahmad Tanwir</td>
+					<td wicket:id="employer.name">Ahmad Tanwir</td>
 				</tr>
 				<tr> 
 					<th>Industry Category</th>
-					<td wicket:id="category.name">Male</td>
+					<td wicket:id="employer.category.name">Male</td>
 				</tr>
 				<tr>
 					<th>Country</th>
-					<td wicket:id="country.name">Indonesia</td>
+					<td wicket:id="employer.country.name">Indonesia</td>
 				</tr>
 				<tr>
 					<th>Location</th>
-					<td wicket:id="location.name">Bandung</td>
+					<td wicket:id="employer.location.name">Bandung</td>
 				</tr>
 				<tr> 
 					<th>Description</th>
-					<td wicket:id="description">Jl. Cipaku I No.55</td>
+					<td wicket:id="employer.description">Jl. Cipaku I No.55</td>
 				</tr>
 			</table>
 		</fieldset>
@@ -44,9 +44,40 @@
 				</tr>
 				<tr> 
 					<th>Position</th>
-					<td wicket:id="category.name">Male</td>
+					<td wicket:id="position">Male</td>
+				</tr>
+				<tr> 
+					<th>Minimum Experince</th>
+					<td><span wicket:id="experience"/> year</td>
+				</tr>
+				<tr> 
+					<th>Educational Qualification</th>
+					<td wicket:id="education.name">Male</td>
 				</tr>
 				
+				<tr> 
+					<th>Faculty</th>
+					<td wicket:id="faculty">Male</td>
+				</tr>
+				
+				<tr>
+					<th>Skills Requirement</th>
+					<td wicket:id="skillRequirements">Indonesia</td>
+				</tr>
+				
+				<tr>
+					<th>Additional Skills Requirement</th>
+					<td wicket:id="additionalSkillRequirements">Indonesia</td>
+				</tr>
+				
+				<tr>
+					<th>Additional Requirements</th>
+					<td wicket:id="additionalRequirements">Indonesia</td>
+				</tr>
+				<tr>
+					<th>Salary</th>
+					<td wicket:id="salary">Indonesia</td>
+				</tr>
 				<tr>
 					<th>Country</th>
 					<td wicket:id="country.name">Indonesia</td>
@@ -55,12 +86,32 @@
 					<th>Location</th>
 					<td wicket:id="location.name">Bandung</td>
 				</tr>
-				
+				<tr>
+					<th>Expired</th>
+					<td wicket:id="expired">Bandung</td>
+				</tr>
 			</table>
 		</fieldset>
 		<hr/>
 		<div class="preview_misc">
-			<a wicket:id="closeLink">[close]</a>
+			<div wicket:id="jsMiscContainer">
+				<div class="warning" id="warningSubmit" style="display: none;">
+					Already submit to this job!
+				</div>
+				<div class="warning" id="warningBookmarks" style="display: none;">
+					Already bookmarks this job!
+				</div>
+			
+				<div class="success" id="successSubmit" style="display: none;">
+					 Submit Success!
+				</div>
+				<div class="success" id="successBookmarks" style="display: none;">
+					 Bookmarks Success!
+				</div>
+				<a wicket:id="submitLink">[ submit ]</a> | 
+				<a wicket:id="bookmarksLink">[ bookmarks ]</a>
+			</div>
+			<a wicket:id="closeLink">[ close ]</a>
 		</div>
 	</div>
 </wicket:panel>

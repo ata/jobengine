@@ -73,6 +73,9 @@ public class ApplicantSearchResultPanel extends BasePanel {
 				final WebMarkupContainer miscContainer = new WebMarkupContainer("miscContainer");
 				miscContainer.setOutputMarkupId(true);
 				item.add(miscContainer);
+				if(!getJESession().getRoles().toString().equalsIgnoreCase("Employer")){
+					miscContainer.setVisible(false);
+				}
 				
 				
 				final ModalWindow modalMessage = new ModalWindow("modalMessage");
@@ -115,9 +118,13 @@ public class ApplicantSearchResultPanel extends BasePanel {
 				AjaxLink bookmarksLink = new AjaxLink("bookmarksLink"){
 					public void onClick(AjaxRequestTarget target) {
 						if(getJESession().getRoles().toString().equalsIgnoreCase("Employer")){
-							getJESession().getUser().getEmployer().getBookmarks().add(jobSeeker);
-							employerService.save(getJESession().getUser().getEmployer());
-							target.appendJavascript("$('successBookmarks').show().fade({duration:2});");
+							if(getJESession().getUser().getEmployer().getBookmarks().add(jobSeeker)){
+								employerService.save(getJESession().getUser().getEmployer());
+								target.appendJavascript("$('successBookmarks').show().fade({duration:2});");
+							} else {
+								target.appendJavascript("$('warningBookmarks').show().fade({duration:2});");
+							}
+							
 							
 						} else {
 							target.appendJavascript("$('notEmployer').show().fade({duration:2});");

@@ -6,7 +6,6 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.dynebolic.jobengine.page.BasePanel;
 import org.dynebolic.jobengine.page.employer.directory.ApplicantDirectoryPanel;
 import org.dynebolic.jobengine.page.employer.job.ClassicJobPanel;
-import org.dynebolic.jobengine.page.employer.newjob.JobPanel;
 import org.dynebolic.jobengine.page.employer.profile.ProfilePanel;
 import org.dynebolic.library.AjaxLazyLoadPanel;
 
@@ -19,10 +18,9 @@ public class EmployerMenuPanel extends BasePanel {
 		AjaxLink applicantDirecoryLink = new AjaxLink("applicantDirectoryLink"){
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				// TODO Auto-generated method stub
 				content = new AjaxLazyLoadPanel("content"){
 					public Component getLazyLoadComponent(String id) {
-						return  new ApplicantDirectoryPanel("content");
+						return new ApplicantDirectoryPanel("content");
 					}
 				};
 				content.setOutputMarkupId(true);
@@ -48,23 +46,7 @@ public class EmployerMenuPanel extends BasePanel {
 			}
 		};
 		add(oldJobLink);
-		/*
-		AjaxLink jobLink = new AjaxLink("jobLink"){
-			@Override
-			public void onClick(AjaxRequestTarget target) {
-				content = new AjaxLazyLoadPanel("content"){
-					public Component getLazyLoadComponent(String id) {
-						return  new JobPanel("content");
-					}
-				};
-				content.setOutputMarkupId(true);
-				page.addOrReplace(content);
-				target.addComponent(content);
-				
-			}
-		};
-		add(jobLink);
-		*/
+
 		AjaxLink profileLink = new AjaxLink("profileLink"){
 			@Override
 			public void onClick(AjaxRequestTarget target) {

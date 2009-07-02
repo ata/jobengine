@@ -1,0 +1,26 @@
+<html>
+<wicket:panel>
+	<h2>Inbox</h2>
+	<table class="dataview">
+		<thead>
+			<th>Subject</th>
+			<th>Sender</th>
+			<th>Action</th>
+		</thead>
+		<tbody>
+			<tr wicket:id="eachView">
+				<td>
+					<div wicket:id="detailModal"/>
+					<a wicket:id="detailLink"><label wicket:id="subject"/></a>
+				</td>
+				<td wicket:id="messageFrom.name"></td>
+				<td>
+					<a wicket:id="deleteLink">
+						<img src="app/styles/delete.png" title="delete"/>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</wicket:panel>
+</html>

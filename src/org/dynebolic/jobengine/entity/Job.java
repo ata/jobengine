@@ -3,6 +3,7 @@ package org.dynebolic.jobengine.entity;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,11 +28,7 @@ import org.hibernate.search.annotations.IndexedEmbedded;
 @Indexed
 @Table(name="jobs")
 public class Job implements IEntity{
-    
-    public Job(){
-        
-    }
-
+   
 
     @Id
     @GeneratedValue
@@ -59,7 +57,14 @@ public class Job implements IEntity{
     private Integer experience;
     
     @Field
-    private String additionalSkills;
+    private String faculty;
+    
+    @Field
+    @Column(length = 1000)
+    private String skillRequirements;
+    
+    @Field
+    private String additionalSkillRequirements;
     
     @Field
     @Column(length = 1000)
@@ -90,15 +95,15 @@ public class Job implements IEntity{
     private Location location;
     
     @OneToMany(cascade=CascadeType.ALL,mappedBy="job")
-    private List<JobSkill> skillRequirements;
+    private List<JobSkill> skills;
     
     @ContainedIn
     @OneToMany(mappedBy="job",cascade=CascadeType.ALL)
     private List<JobLanguage> languages;
     
     @ContainedIn
-    @OneToMany(mappedBy="job",cascade=CascadeType.ALL)
-    private List<JobSubmited> submiteds;
+    @ManyToMany(cascade=CascadeType.ALL)
+    private Set<JobSeeker> submiteds;
     
 
     public Long getId() {
@@ -205,15 +210,6 @@ public class Job implements IEntity{
     }
 
 
-    public void setAdditionalSkills(String additionalSkills) {
-        this.additionalSkills = additionalSkills;
-    }
-
-    public String getAdditionalSkills() {
-        return additionalSkills;
-    }
-
-
 
     /**
      * @param experience the experience to set
@@ -259,18 +255,7 @@ public class Job implements IEntity{
 	public EducationLevel getEducation() {
 		return education;
 	}
-	/**
-	 * @param submiteds the submiteds to set
-	 */
-	public void setSubmiteds(List<JobSubmited> submiteds) {
-		this.submiteds = submiteds;
-	}
-	/**
-	 * @return the submiteds
-	 */
-	public List<JobSubmited> getSubmiteds() {
-		return submiteds;
-	}
+
 	/**
 	 * @param title the title to set
 	 */
@@ -295,12 +280,6 @@ public class Job implements IEntity{
 	public String getAdditionalRequirements() {
 		return additionalRequirements;
 	}
-	public void setSkillRequirements(List<JobSkill> skillRequirements) {
-		this.skillRequirements = skillRequirements;
-	}
-	public List<JobSkill> getSkillRequirements() {
-		return skillRequirements;
-	}
 
 
 	public void setLanguages(List<JobLanguage> languages) {
@@ -320,6 +299,56 @@ public class Job implements IEntity{
 
 	public Country getCountry() {
 		return country;
+	}
+
+
+	public void setSkills(List<JobSkill> skills) {
+		this.skills = skills;
+	}
+
+
+	public List<JobSkill> getSkills() {
+		return skills;
+	}
+
+
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+
+
+	public String getFaculty() {
+		return faculty;
+	}
+
+
+	public void setSkillRequirements(String skillRequirements) {
+		this.skillRequirements = skillRequirements;
+	}
+
+
+	public String getSkillRequirements() {
+		return skillRequirements;
+	}
+
+	public void setAdditionalSkillRequirements(
+			String additionalSkillRequirements) {
+		this.additionalSkillRequirements = additionalSkillRequirements;
+	}
+
+
+	public String getAdditionalSkillRequirements() {
+		return additionalSkillRequirements;
+	}
+
+
+	public void setSubmiteds(Set<JobSeeker> submiteds) {
+		this.submiteds = submiteds;
+	}
+
+
+	public Set<JobSeeker> getSubmiteds() {
+		return submiteds;
 	}
     
     

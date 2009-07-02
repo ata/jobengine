@@ -35,6 +35,7 @@ import org.dynebolic.jobengine.entity.Job;
 import org.dynebolic.jobengine.entity.JobCategory;
 import org.dynebolic.jobengine.entity.Location;
 import org.dynebolic.jobengine.entity.Role;
+import org.dynebolic.jobengine.service.CountryService;
 import org.dynebolic.jobengine.service.EducationLevelService;
 import org.dynebolic.jobengine.service.EmployerService;
 import org.dynebolic.jobengine.service.GenericService;
@@ -49,7 +50,7 @@ public abstract class JobMasterFormPanel extends Panel{
 	private JobCategoryService categoryService = new JobCategoryService();
 	private EducationLevelService educationLevelService = new EducationLevelService();
 	private LocationService locationService = new LocationService();
-	private EmployerService employerService = new EmployerService();
+	private CountryService countryService = new CountryService();
 	private Job job;
 	
 	public JobMasterFormPanel(String id, final Long job_id) {
@@ -79,7 +80,6 @@ public abstract class JobMasterFormPanel extends Panel{
         form.add(fc);
         
         fc = new TextArea("description");
-        fc.setRequired(true);
         form.add(fc);
         
         ChoiceRenderer choiceRenderer = new ChoiceRenderer("name","id");
@@ -96,9 +96,24 @@ public abstract class JobMasterFormPanel extends Panel{
         fc.add(new NumberValidator.RangeValidator(1,50));
         form.add(fc);
         
+        fc = new TextArea("skillRequirements");
+        fc.setRequired(true);
+        form.add(fc);
+        
+        fc = new TextArea("additionalSkillRequirements");
+        form.add(fc);
+        
+        fc = new TextArea("additionalRequirements");
+        form.add(fc);
+        
+        
         List<EducationLevel> educationLevels = educationLevelService.find();
         fc = new DropDownChoice("education",educationLevels,choiceRenderer);
         form.add(fc);
+        
+        fc = new TextField("faculty",String.class);
+        form.add(fc);
+        
         
         fc = new TextField("ipk",Double.class);
         fc.add(new NumberValidator.DoubleRangeValidator(0.00,4.00));
@@ -108,7 +123,7 @@ public abstract class JobMasterFormPanel extends Panel{
         fc.add(new NumberValidator.MinimumValidator(0));
         form.add(fc);
         
-        fc = new DropDownChoice("country",employerService.find(),choiceRenderer);
+        fc = new DropDownChoice("country",countryService.find(),choiceRenderer);
         fc.setRequired(true);
         form.add(fc);
         
@@ -117,10 +132,6 @@ public abstract class JobMasterFormPanel extends Panel{
         fc.setRequired(true);
         form.add(fc);
 
-        fc = new TextArea("additionalSkills");
-        form.add(fc);
-        
-        
         fc = new DateTextField("expired");
         fc.setRequired(true);
         fc.add(new DatePicker());

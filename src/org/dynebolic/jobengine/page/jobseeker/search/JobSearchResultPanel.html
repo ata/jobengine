@@ -1,23 +1,23 @@
 <html>
 <wicket:panel>
 	<div class="grid_9 content">
-		<h2>Job Search Result</h2>
-		<p>
-			Found <b><span wicket:id="resultSize"/></b> result with <b>
+		<div class="warning" id="notJobSeeker" style="display: none;">
+			Sorry.. you must login with job seeker to access this feature!
+		</div>
+		<div class="resultInfo">
+			Found <b><span wicket:id="resultSize"/></b> Job result with <b>
 			<span wicket:id="keywords"/></b> keywords
-			
-		</p>
+		</div>
 		
 		<div class="result" wicket:id="eachResult">
+			<div wicket:id="detailModal"/>
 			<div>
-				<a wicket:id="submitLink"><h3><span wicket:id="position"/></h3></a>
+				<a wicket:id="detailLink"><h3><span wicket:id="title"/></h3></a>,<span wicket:id="expired"/>
 			</div>
 			<div wicket:id="employer.name"></div>
-			<div>expired : <span wicket:id="expired"/></div>
-			
-			<div>minimum experience : <span wicket:id="experience"/> years,</div>
+			<div>category : <span wicket:id="category.name"/></div>
+			<div>minimum experience : <span wicket:id="experience"/> year,</div>
 			<div>location : <span wicket:id="location.name"/></div>
-			<div wicket:id="summary"></div>
 		</div>
 		<div class="nav_result">
 			<a wicket:id="previousLink" href="#">[previous]</a>

@@ -4,6 +4,10 @@
 		<div class="warning" id="notEmployer" style="display: none;">
 			Sorry.. you must login with employer to access this feature!
 		</div>
+		
+		<div class="warning" id="warningBookmarks" style="display: none;">
+			Applicant is already bookmarks!
+		</div>
 	
 		<div class="success" id="messageSend" style="display: none;">
 			 Success to  Send Message!
@@ -21,11 +25,16 @@
 				<th>
 					<div wicket:id="modalDetail"/>
 					<a wicket:id="detailLink"><h3><span wicket:id="title"/></h3></a>
+					&nbsp;&nbsp;
 					<span wicket:id="miscContainer">
 						<div wicket:id="modalMessage"/>
-						<a wicket:id="bookmarksLink"><img title="bookmarks" src="app/styles/bookmarks.png"></a>
+						<a wicket:id="bookmarksLink">
+							<img title="bookmarks" src="app/styles/bookmarks.png">
+						</a>
 						&nbsp;&nbsp;
-						<a wicket:id="messageLink"><img title="send message" src="app/styles/message.png"></a>
+						<a wicket:id="messageLink">
+							<img title="send message" src="app/styles/message.png">
+						</a>
 					</span>
 				</th>
 			</tr>

@@ -53,7 +53,7 @@ public class JobService extends GenericService<Job> {
 			Search.createFullTextEntityManager(em);
 		String[] defaultKey = {"title","expired","position","description","ipk",
 				"salary","experience","location.name", "employer.name",
-				"category.name","education.name"};
+				"category.name","education.name","faculty"};
 		MultiFieldQueryParser parser = new MultiFieldQueryParser(defaultKey,
 				  new StandardAnalyzer());
 		
@@ -72,8 +72,8 @@ public class JobService extends GenericService<Job> {
 		List<Job> jobs = (List<Job>) fullTextQuery.getResultList();
 		System.out.println("Jobs: " + jobs);
 		return jobs;
-		
 	}
+	
 
 	/**
 	 * @param resultSize the resultSize to set

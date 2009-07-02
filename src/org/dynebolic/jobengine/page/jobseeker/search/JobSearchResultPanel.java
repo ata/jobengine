@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -13,11 +14,13 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.dynebolic.jobengine.entity.Job;
 import org.dynebolic.jobengine.page.BasePage;
+import org.dynebolic.jobengine.page.BasePanel;
+import org.dynebolic.jobengine.page.employer.job.JobPreviewPanel;
 import org.dynebolic.jobengine.service.JobService;
 import org.dynebolic.library.AjaxLazyLoadPanel;
 
 @SuppressWarnings("serial")
-public class JobSearchResultPanel extends Panel {
+public class JobSearchResultPanel extends BasePanel {
 	private JobService service = new JobService();
 	private Integer lastPage;
 	private Integer maxResultPage = 10;
@@ -55,25 +58,39 @@ public class JobSearchResultPanel extends Panel {
 		
 			@Override
 			protected void populateItem(ListItem item) {
-				Job job = (Job) item.getModelObject();
+				final Job job = (Job) item.getModelObject();
 				item.setModel(new CompoundPropertyModel(job));
-				
-				AjaxLink linkSubmit = new AjaxLink("submitLink"){
-
-					@Override
+				final ModalWindow detailModal = new ModalWindow("detailModal");
+				item.add(detailModal);
+				detailModal.setInitialWidth(780);
+				detailModal.setResizable(false);
+				detailModal.setCssClassName("w_silver");
+				AjaxLink detailLink = new AjaxLink("detailLink"){
 					public void onClick(AjaxRequestTarget target) {
+						if(getJESession().getRoles().toString().equalsIgnoreCase("JobSeeker")){
+							detailModal.setContent(new JobPreviewPanel(detailModal.getContentId(), job.getId()){
+	
+								@Override
+								protected void onClose(AjaxRequestTarget target) {
+									detailModal.close(target);
+									
+								}
+								
+							});
+							detailModal.show(target);
+						} else {
+							target.appendJavascript("$('notJobSeeker').show().fade({duration:2});");
+						}
 					}
-					
 				};
-				
-				linkSubmit.add(new Label("position",job.getPosition()));
-				item.add(linkSubmit);
+				item.add(detailLink);
+				detailLink.add(new Label("title",job.getTitle()));
 				//item.add(new Label("position"));
 				item.add(new Label("employer.name"));
+				item.add(new Label("category.name"));
 				item.add(new Label("location.name"));
 				item.add(new Label("experience"));
 				item.add(new Label("expired",dateFormat.format(job.getExpired())));
-				item.add(new Label("summary"));
 			}
 		};
 		add(eachResult);

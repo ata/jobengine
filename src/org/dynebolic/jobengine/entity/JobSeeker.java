@@ -2,6 +2,7 @@ package org.dynebolic.jobengine.entity;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -118,10 +119,7 @@ public class JobSeeker implements IEntity{
     private List<Location> preferLocations;
     
     @ManyToMany(cascade=CascadeType.MERGE)
-    private List<Job> jobBookmarks;
-    
-    @OneToMany(mappedBy="jobSeeker",cascade=CascadeType.MERGE)
-    private List<JobSubmited> submiteds;
+    private Set<Job> bookmarks;
     
     public JobSeeker() {
     }
@@ -373,30 +371,6 @@ public class JobSeeker implements IEntity{
 	/**
 	 * @param jobBookmarks the jobBookmarks to set
 	 */
-	public void setJobBookmarks(List<Job> jobBookmarks) {
-		this.jobBookmarks = jobBookmarks;
-	}
-
-	/**
-	 * @return the jobBookmarks
-	 */
-	public List<Job> getJobBookmarks() {
-		return jobBookmarks;
-	}
-
-	/**
-	 * @param submiteds the submiteds to set
-	 */
-	public void setSubmiteds(List<JobSubmited> submiteds) {
-		this.submiteds = submiteds;
-	}
-
-	/**
-	 * @return the submiteds
-	 */
-	public List<JobSubmited> getSubmiteds() {
-		return submiteds;
-	}
 
 	/**
 	 * @param preferPosition the preferPosition to set
@@ -448,5 +422,12 @@ public class JobSeeker implements IEntity{
 		return title;
 	}
 
+	public void setBookmarks(Set<Job> bookmarks) {
+		this.bookmarks = bookmarks;
+	}
+
+	public Set<Job> getBookmarks() {
+		return bookmarks;
+	}
 
 }
