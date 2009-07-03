@@ -123,8 +123,8 @@ public class SignUpPanel extends BasePanel {
 			protected void onSubmit(AjaxRequestTarget target, Form form) {
 				user.setComplete(false);
 				user.hashPassword();
-				user.getUsername().toLowerCase();
-				user.getEmail().toLowerCase();
+				user.setUsername(user.getUsername().toLowerCase());
+				user.setEmail(user.getEmail().toLowerCase());
 				if(user.getRole().getName().equalsIgnoreCase("JobSeeker")){
 					JobSeeker jobSeeker = new JobSeeker();
 					jobSeeker.setName(user.getName());

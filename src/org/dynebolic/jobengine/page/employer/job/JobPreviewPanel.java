@@ -63,8 +63,8 @@ public abstract class JobPreviewPanel extends BasePanel {
 			}
 			
 		});
-		if(getJESession().getRoles().toString().equalsIgnoreCase("JobSeeker")){
-			jsMiscContainer.setVisible(true);
+		if(!getJESession().getRoles().toString().equalsIgnoreCase("JobSeeker")){
+			jsMiscContainer.setVisible(false);
 		}
 		
 		

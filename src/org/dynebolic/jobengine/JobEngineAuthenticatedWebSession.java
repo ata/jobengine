@@ -18,7 +18,7 @@ public class JobEngineAuthenticatedWebSession extends AuthenticatedWebSession {
 
 	@Override
 	public boolean authenticate(String username, String password) {
-		user = service.authenticate(username.toLowerCase(), password.toLowerCase());
+		user = service.authenticate(username.toLowerCase(), password);
 		
 		if(user != null) {
 			return true;
